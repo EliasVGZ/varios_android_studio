@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Cuenta_clicks</string>
+    <string name="voy_a_contar_tus_clicks">Voy a contar tus clicks</string>
+    <string name="pulsame">PÚLSAME</string>
+    <string name="finalizar">Finalizar</string>
+</resources>
