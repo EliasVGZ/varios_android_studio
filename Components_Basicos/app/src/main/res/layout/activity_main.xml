@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_light"
+            android:gravity="center"
+            android:shadowColor="#FFEB3B"
+            android:shadowRadius="20"
+            android:text="Hello World!"
+            android:textSize="30sp"
+            android:textStyle="italic|bold"
+            android:typeface="serif" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black">
+
+        </View>
+        <!-- NO INTERESA: añade al texto inicial-->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Esto no INTERESA">
+
+        </EditText>
+        <!--ESTO SI INTERESA: añadir nombre y edad-->
+        <EditText
+            android:id="@+id/et_text_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Nombre: ">
+
+        </EditText>
+        <!--INPUTYPE IMPORTANTE!!! -->
+        <EditText
+            android:id="@+id/et_numero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="edad: "
+            android:inputType="number">
+
+        </EditText>
+        <!-- DECIMALES-->>
+
+        <EditText
+            android:id="@+id/et_decimal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Numero decimal: "
+            android:inputType="numberDecimal">
+
+        </EditText>
+        <!-- PASSWORD -->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="TEXT PASSWORD: "
+            android:inputType="textPassword">
+
+        </EditText>
+        <!-- PRIMERA LETRA EN MAYUSCULAS -->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="MULTILINEA CON TIPO: "
+            android:inputType="textCapWords">
+
+        </EditText>
+        <!-- TODO EL TEXTO EN MULTILINEA -->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="MULTILINEA CON PRIMERA EN MAYUSCULA: "
+            android:inputType="textCapWords|textMultiLine">
+
+        </EditText>
+        <!-- TODO TODAS EN MAYUSCULAS -->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="TODAS MAYUSCULAS: "
+            android:inputType="textCapCharacters">
+
+        </EditText>
+        <!-- PEDIR FECHA AL USUARIO -->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="FECHA: "
+            android:inputType="date">
+
+        </EditText>
+
+        <!--TODO BOTON CON IMAGEN-->
+        <Button
+            android:id="@+id/btn_estandar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Boton normal" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cheque" />
+        <!--TODO BOTON CON IMAGEN-->
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cheque" />
+        <!--TODO BOTON CON IMAGEN-->
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cheque" />
+        <!-- TODO BOTON AÑADIENDO IMAGEN -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/cheque"
+            android:text="ok" />
+
+        <ToggleButton
+            android:id="@+id/toggle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOff="OFF"
+            android:textOn="ON" />
+        <!-- LINEA SEPARACION -->
+
+        <!--CHECK-->
+        <CheckBox
+            android:id="@+id/chk_acepto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="ACEPTO LAS CONDICIONES" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="XXXXXXXXXXXXXXX" />
+        <!-- LINEA SEPARACION -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black" />
+        <!--RADIO GROUP, OBLIGATORIO QUE TENGA ID SINO EL TRUE SIEMPRE QUEDA CHECKEADO-->
+        <RadioGroup
+            android:id="@+id/rg_grupo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rbnsi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SI"
+                android:checked="true"/>
+            <RadioButton
+                android:id="@+id/rbno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NO"/>
+            <RadioButton
+                android:id="@+id/rbaveces"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A VECES"/>
+
+        </RadioGroup>
+        <!--TODO USO DE SWITCH-->
+        <Switch
+            android:id="@+id/swWifi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="activar wifi">
+
+        </Switch>
+        <Switch
+            android:id="@+id/swdatos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ACTIVAR datos moviles">
+
+        </Switch>
+        <!--todo PEDIR FECHA BIEN -->
+        <DatePicker
+            android:id="@+id/dpFecha1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!-- LINEA SEPARACION -->
+        <DatePicker
+            android:id="@+id/dpFecha2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:datePickerMode="spinner"
+            android:padding="40dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black" />
+        <!--TIME PICKER-->
+        <TimePicker
+            android:id="@+id/tpTime1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <!-- LINEA SEPARACION -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black" />
+        <TimePicker
+            android:id="@+id/tpTime2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner"/>
+        <!-- LINEA SEPARACION -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black" />
+        <!-- BARRA DE PROGRESO -->
+        <ProgressBar
+            android:id="@+id/pb1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="25dp"/>
+
+        <SeekBar
+            android:id="@+id/sek1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:min="1"
+            android:max="10"
+            android:progress="1"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_margin="15dp"/>
+
+        <RatingBar
+            android:id="@+id/rating1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="0.5"
+            android:rating="1"/>
+
+
+
+
+    </LinearLayout>
+</ScrollView>
