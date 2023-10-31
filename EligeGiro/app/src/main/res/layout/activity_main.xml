@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿Giramos?!"
+            android:textSize="40dp"
+            android:padding="20sp"/>
+
+
+    <RadioGroup
+        android:id="@+id/rg_grupo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="30sp">
+        <RadioButton
+            android:id="@+id/rbnTexto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Texto"
+            android:checked="true"/>
+        <RadioButton
+            android:id="@+id/rbnImagen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Imagen"/>
+
+
+    </RadioGroup>
+        <Button
+            android:id="@+id/btnAceptar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Aceptar"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:layout_gravity="center">
+    <TextView
+        android:id="@+id/tvGirando"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:text="GIRANDO!"
+        android:textSize="40dp"
+        android:padding="20sp"
+        android:visibility="gone"
+        android:gravity="center"/>
+    <ImageView
+        android:id="@+id/ivImagen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:src="@drawable/imagen_abc"
+        android:layout_gravity="center"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>
