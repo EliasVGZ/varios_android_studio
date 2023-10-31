@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:text="¿Giramos?!"
             android:textSize="40dp"
-            android:padding="20sp"/>
+            android:padding="30sp"/>
 
 
     <RadioGroup
@@ -41,6 +41,15 @@
 
 
     </RadioGroup>
+        <EditText
+            android:id="@+id/etGrados"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Angulo de giro (10-90 grados)"
+            android:inputType="number"
+            android:gravity="center">
+
+        </EditText>
         <Button
             android:id="@+id/btnAceptar"
             android:layout_width="wrap_content"
