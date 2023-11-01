@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="#84D1E4">
+    android:background="#FFEB3B">
 
     <LinearLayout
         android:id="@+id/ll1"
@@ -49,10 +49,52 @@
             android:id="@+id/chkDespedida"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="¿Deseas despedida"
+            android:checked="false"
+            android:text="¿Deseas despedida?"
             android:layout_marginBottom="30dp"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            />
+
+        <!-- de momento visibility invisible or gone -->
+        <LinearLayout
+            android:id="@+id/llDespedida"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <TextView
+                android:id="@+id/tvElegir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Elige tu despedida"
+                android:layout_gravity="center">
+
+            </TextView>
+
+            <RadioGroup
+                android:id="@+id/rgElegir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp"
+                android:gravity="center">
+                <RadioButton
+                    android:id="@+id/rbnAdios"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Adios"
+                    android:checked="true"/>
+                <RadioButton
+                    android:id="@+id/rbnHastaPronto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hasta Pronto"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+
         <Button
             android:id="@+id/btnSaludar"
             android:layout_width="wrap_content"
@@ -69,10 +111,6 @@
             android:layout_gravity="center">
 
         </TextView>
-
-
-
-
 
 
     </LinearLayout>
