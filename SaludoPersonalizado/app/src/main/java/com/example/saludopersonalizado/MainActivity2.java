@@ -91,8 +91,6 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         rbnAdios = findViewById(R.id.rbnAdios);
         rbnHastaPronto = findViewById(R.id.rbnHastaPronto);
         tvElegir = findViewById(R.id.tvElegir);
-
-
     }
 
 
