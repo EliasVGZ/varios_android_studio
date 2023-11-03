@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if(rbnPeseta.isChecked()){
                     Double euros = pesetaAeuros(valorM);
-                    String textoFormateado = String.format("%.2f", euros);
+                    String textoFormateado = String.format("%.2f", euros); //dos digitos como maxIMO
                     mensajeMoneda = valorM + " Pesetas equivalen a " + textoFormateado + " euros";
                 }else if(rbnEuro.isChecked()){
                     Double pesetas = eurosApestas(valorM);
