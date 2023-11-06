@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CicloDeVida</string>
+    <string name="finalizar">FINALIZAR</string>
+    <string name="teclea_dato">Teclea dato</string>
+</resources>

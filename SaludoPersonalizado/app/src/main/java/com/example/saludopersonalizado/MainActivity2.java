@@ -26,7 +26,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
     private RadioButton rbnSra, rbnSr, rbnAdios, rbnHastaPronto;
     private CheckBox chkDespedida;
     private LinearLayout llDespedida;
-    String seleccionDespedida = null;
+    String seleccionDespedida = " ";
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +36,10 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         sentenciasFind();
         sentenciasSetear();
 
-        chkDespedida.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        chkDespedida.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                if(isChecked){
+            public void onClick(View v) {
+                if(chkDespedida.isChecked()){
                     llDespedida.setVisibility(View.VISIBLE);
                     if (rbnAdios.isChecked()) {
                         seleccionDespedida = rbnAdios.getText().toString();
@@ -50,10 +49,13 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
                     }
                 }else{
                     llDespedida.setVisibility(View.GONE);
+                    seleccionDespedida = ""; // Reinicia la selección si el CheckBox se desmarca
                 }
 
             }
         });
+
+
 
 
     }
@@ -103,8 +105,8 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
 
             if (!valorNombre.isEmpty() && !valorNacimientoString.isEmpty()) {
                 int valorNacimiento = Integer.parseInt(valorNacimientoString);
-                String mensajeEdad;
 
+                String mensajeEdad;
                 if (esMayorDeEdad(valorNacimiento)) {
                     mensajeEdad = "Eres mayor de edad";
                 } else {
@@ -117,6 +119,28 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
                 } else if (rbnSr.isChecked()) {
                     saludo += "Sr.";
                 }
+
+
+                /*
+                chkDespedida.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                        if(isChecked){
+                            llDespedida.setVisibility(View.VISIBLE);
+                            if (rbnAdios.isChecked()) {
+                                seleccionDespedida = rbnAdios.getText().toString();
+
+                            } else if (rbnHastaPronto.isChecked()) {
+                                seleccionDespedida = rbnHastaPronto.getText().toString();
+                            }
+                        }else{
+                            llDespedida.setVisibility(View.GONE);
+                            seleccionDespedida = ""; // Reinicia la selección si el CheckBox se desmarca
+                        }
+
+                    }
+                });*/
 
                 //TODO NO FUNCIONA!!!
                 /*
