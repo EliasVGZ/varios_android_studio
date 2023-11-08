@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ESTAMOS EN LA ACTIVITY 1"
+            android:textSize="20dp"
+            android:layout_marginBottom="10dp"/>
+        <!-- llamada a la nueva activity-->
+        <Button
+            android:id="@+id/btnLlamadaActividad2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LLAMADA AL ACTIVITY2"
+            android:onClick="onClickCambioActivity">
+        </Button>
+        <!--LLAMADA A UN ACTIVITY PASANDOLE DATOS-->
+        <Button
+            android:id="@+id/btnLlamadaActividad3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LLAMADA AL ACT3 Y ENVIO DE DATOS"
+            android:onClick="onClickCambioActivity">
+        </Button><!--LLAMADA A UN ACTIVITY PASANDOLE DATOS MEDIANTE UN BUNDLE-->
+        <Button
+            android:id="@+id/btnLlamadaActividad4Bundle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LLAMADA AL ACT4 + BUNDLE"
+            android:onClick="onClickCambioActivity">
+        </Button>
+        <!-- llamar a activity esperando respuesta -->
+        <Button
+            android:id="@+id/btnLlamadaEsperandoRespuesta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LLAMADA AL ACT5, ESPERANDO ReSPUESTA"
+            android:onClick="onClickCambioActivity">
+        </Button>
+
+        <!-- BOTON PARA LLAMAR A OTRA APLICACION -->
+        <Button
+            android:id="@+id/btnLlamadaOtraApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Llamda a activity de otra App"
+            android:onClick="onClickCambioActivity">
+        </Button>
+        <TextView
+            android:id="@+id/tv_RespuestaAct5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/black"
+            android:background="#FF9800"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
