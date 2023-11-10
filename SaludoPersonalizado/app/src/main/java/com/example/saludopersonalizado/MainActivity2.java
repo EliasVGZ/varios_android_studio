@@ -120,46 +120,6 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
                     saludo += "Sr.";
                 }
 
-
-                /*
-                chkDespedida.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                        if(isChecked){
-                            llDespedida.setVisibility(View.VISIBLE);
-                            if (rbnAdios.isChecked()) {
-                                seleccionDespedida = rbnAdios.getText().toString();
-
-                            } else if (rbnHastaPronto.isChecked()) {
-                                seleccionDespedida = rbnHastaPronto.getText().toString();
-                            }
-                        }else{
-                            llDespedida.setVisibility(View.GONE);
-                            seleccionDespedida = ""; // Reinicia la selección si el CheckBox se desmarca
-                        }
-
-                    }
-                });*/
-
-                //TODO NO FUNCIONA!!!
-                /*
-                if (chkDespedida.isChecked()) {
-                    llDespedida.setVisibility(View.VISIBLE);
-                    //CREO UN TOASTT PARA VERIFICAR SI AL CLICKEAR CHKDESPEDIDA HACE ALGO TODO -------NO FUNCIONA---------
-
-                    Toast.makeText(this, "check despedida seleccionado", Toast.LENGTH_SHORT).show();
-                    if (rbnAdios.isChecked()) {
-                        seleccionDespedida = rbnAdios.getText().toString();
-
-                    } else if (rbnHastaPronto.isChecked()) {
-                        seleccionDespedida = rbnHastaPronto.getText().toString();
-                    }
-
-                } else if (!chkDespedida.isChecked()) {
-                    llDespedida.setVisibility(View.GONE);
-                }*/
-
                 String mensajeSaludo = "Hola, " + saludo + " " + valorNombre + "\n" + mensajeEdad + "\n " + seleccionDespedida;
                 tvSaludo.setText(mensajeSaludo);
             } else {
