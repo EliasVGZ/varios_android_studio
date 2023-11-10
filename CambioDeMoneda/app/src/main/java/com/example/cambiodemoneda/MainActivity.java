@@ -2,6 +2,7 @@ package com.example.cambiodemoneda;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnCambiar;
     private EditText etValor;
     private TextView tvCambio;
+    private String DatoAEnviar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,14 +67,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(rbnPeseta.isChecked()){
                     Double euros = pesetaAeuros(valorM);
                     String textoFormateado = String.format("%.2f", euros); //dos digitos como maxIMO
-                    mensajeMoneda = valorM + " Pesetas equivalen a " + textoFormateado + " euros";
+                    DatoAEnviar = valorM + " Pesetas equivalen a " + textoFormateado + " euros";
                 }else if(rbnEuro.isChecked()){
                     Double pesetas = eurosApestas(valorM);
                     String textoFormateado = String.format("%.2f", pesetas);
-                    mensajeMoneda = valorM + " Euros equivalen a " + textoFormateado + " pesetas";
+                    DatoAEnviar = valorM + " Euros equivalen a " + textoFormateado + " pesetas";
                 }
-                tvCambio.setText(mensajeMoneda);
 
+
+                Intent intent = new Intent(this, Activity2.class);
+                //INSTANCIA DE OBJETO BUNDLE
+                Bundle bundle = new Bundle();
+                //LE PASAMOS AL BUNDLE UNA KEY Y EL MENSAJE
+                bundle.putString("mensajeMoneda", DatoAEnviar);
+                //METEMOS AL INTENT EL PAQUETE BUNDLE, EL EXTRAS SERA EN PLURAL
+                intent.putExtras(bundle);
+
+                startActivity(intent);
             }else{
                 tvCambio.setVisibility(View.GONE);
                 Toast.makeText(this, "No has añadido valor", Toast.LENGTH_SHORT).show();
