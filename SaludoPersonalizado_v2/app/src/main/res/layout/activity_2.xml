@@ -38,6 +38,52 @@
             android:layout_gravity="center">
 
         </TextView>
+        <CheckBox
+            android:id="@+id/chkDespedida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿Deseas despedida?"
+            android:layout_marginBottom="10dp">
+
+        </CheckBox>
+        <LinearLayout
+            android:id="@+id/llDespedida"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <TextView
+                android:id="@+id/tvElegir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Elige tu despedida"
+                android:layout_gravity="center">
+
+            </TextView>
+
+            <RadioGroup
+                android:id="@+id/rgElegir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp"
+                android:gravity="center">
+                <RadioButton
+                    android:id="@+id/rbnAdios"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Adios"
+                    android:checked="true"/>
+                <RadioButton
+                    android:id="@+id/rbnHastaPronto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hasta Pronto"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
         <Button
             android:id="@+id/btnFinalizar"
             android:layout_width="wrap_content"

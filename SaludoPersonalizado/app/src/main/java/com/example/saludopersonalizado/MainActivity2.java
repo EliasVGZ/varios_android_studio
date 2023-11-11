@@ -36,22 +36,14 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         sentenciasFind();
         sentenciasSetear();
 
-        chkDespedida.setOnClickListener(new View.OnClickListener() {
+        chkDespedida.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                if(chkDespedida.isChecked()){
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
                     llDespedida.setVisibility(View.VISIBLE);
-                    if (rbnAdios.isChecked()) {
-                        seleccionDespedida = rbnAdios.getText().toString();
-
-                    } else if (rbnHastaPronto.isChecked()) {
-                        seleccionDespedida = rbnHastaPronto.getText().toString();
-                    }
                 }else{
                     llDespedida.setVisibility(View.GONE);
-                    seleccionDespedida = ""; // Reinicia la selección si el CheckBox se desmarca
                 }
-
             }
         });
 
@@ -100,11 +92,21 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         if (v.getId() == R.id.btnSaludar) {
 
+
             String valorNombre = et_nombre.getText().toString();
             String valorNacimientoString = et_nacimiento.getText().toString();
 
             if (!valorNombre.isEmpty() && !valorNacimientoString.isEmpty()) {
                 int valorNacimiento = Integer.parseInt(valorNacimientoString);
+                if(chkDespedida.isChecked()){
+                    String mensajeSaludo = "";
+                    if (rbnAdios.isChecked()) {
+                        mensajeSaludo = "Adios";
+                    } else if (rbnHastaPronto.isChecked()) {
+                        mensajeSaludo = "Hasta pronto";
+                    }
+                    seleccionDespedida = mensajeSaludo;
+                }
 
                 String mensajeEdad;
                 if (esMayorDeEdad(valorNacimiento)) {

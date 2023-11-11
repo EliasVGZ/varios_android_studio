@@ -1,5 +1,6 @@
 package com.example.saludopersonalizado_v2;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String DatoAEnviar;
     private EditText et_nombre, et_nacimiento;
     private RadioButton rbnSra, rbnSr;
+    private static final int CODIGO_LLAMADA_ACT2 = 1;
 
 
     @Override
@@ -74,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         //METEMOS AL INTENT EL PAQUETE BUNDLE, EL EXTRAS SERA EN PLURAL
                         intent.putExtras(bundle);
 
-                        startActivity(intent);
+                        startActivityForResult(intent, CODIGO_LLAMADA_ACT2);
 
 
                     } else {
@@ -107,4 +110,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        //RESPUESTA DE LA ACTIVITY 2
+        if(requestCode == CODIGO_LLAMADA_ACT2){
+            if(resultCode == RESULT_OK){
+                TextView tvRespuesta = findViewById(R.id.tvRespuestaAct2);
+                tvRespuesta.setText(data.getStringExtra("respuesta"));
+            }else{
+                TextView tvRespuestaNegativa = findViewById(R.id.tvRespuestaAct2);
+                tvRespuestaNegativa.setText("El usuario no ha contestado");
+                //Toast.makeText(this, "Mensaje no recibido", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+
 }
