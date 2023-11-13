@@ -53,10 +53,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Llamda a activity de otra App"
-            android:onClick="onClickCambioActivity">
-        </Button>
+            android:onClick="onClickCambioActivity"/>
+
+        <!-- BOTON LLAMADA A CALCULADORA-->
+        <Button
+            android:id="@+id/btnLlamadaCalculadora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Llamada a Calculadora"
+            android:onClick="onClickCambioActivity"/>
+        <Button
+            android:id="@+id/btnLlamadaAjustes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Llamada a AJUSTES"
+            android:onClick="onClickCambioActivity"/>
+        <Button
+            android:id="@+id/btnLlamadaWeb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Llamada a UNA WEB"
+            android:onClick="onClickCambioActivity"/>
+        <Button
+            android:id="@+id/btnLlamadaAct6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Llamada a ACTIVITY 6"
+            android:onClick="onClickCambioActivity"/>
         <TextView
             android:id="@+id/tv_RespuestaAct5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/black"
+            android:background="#FF9800"/>
+        <TextView
+            android:id="@+id/tv_RespuestaAct6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
