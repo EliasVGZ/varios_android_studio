@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_posicion_mapa:
 
                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:42.25,-8.68"));
-                intent.setPackage("com.google.android.apps.map");
+                //intent.setPackage("com.google.android.apps.map");
                 if(intent.resolveActivity(getPackageManager() )!= null){
                     startActivity(intent);
                 }else{
