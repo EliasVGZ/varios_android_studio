@@ -2,11 +2,13 @@ package com.example.intents_implicitos;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private static final int LLAMADA_TELEFONO = 0;
+    private static final int LLAMADA_TELEFONO_DIRECTO = 2;
     Intent intent, intentDial, intentDialNumeroPremarcado;
 
     @Override
@@ -42,19 +45,53 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentDialNumeroPremarcado);
                 break;
             case R.id.btn_call_directo:
-                //intentDialNumeroPremarcado = new Intent(Intent.ACTION_CALL, Uri.parse("tel:(+34)695103238"));
-                //startActivity(intentDialNumeroPremarcado);
 
-                //averiguar si el permiso ya ha sido concedido
-                if(checkSelfPermission(Manifest.permission.CALL_PHONE) == (PackageManager.PERMISSION_GRANTED)){
-                    //realizar la llamada
+                if(Build.VERSION.SDK_INT >= 23){ //TODO Evitar la ejecucion en APIS anteriores
+                    //averiguar si el permiso ya ha sido concedido
+                    if(checkSelfPermission(Manifest.permission.CALL_PHONE) == (PackageManager.PERMISSION_GRANTED)){
+                        //realizar la llamada
+                        intentDialNumeroPremarcado = new Intent(Intent.ACTION_CALL, Uri.parse("tel:(+34)695103238"));
+                        startActivity(intentDialNumeroPremarcado);
+                    }else {
+                        //Si el permiso no está concedido debemos solicitar al SO la gestion del permiso por parte del usuario
+                        requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, LLAMADA_TELEFONO);
+                    }
+                }else{
+                    //En APIS anteriores a la 23
+                    //Realizar la acción: en este caso realizar la llamada telefónica directa
                     intentDialNumeroPremarcado = new Intent(Intent.ACTION_CALL, Uri.parse("tel:(+34)695103238"));
                     startActivity(intentDialNumeroPremarcado);
-                }else {
-                    //Si el permiso no está concedido debemos solicitar al SO la gestion del permiso por parte del usuario
-                    requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, LLAMADA_TELEFONO);
                 }
                 break;
+            case R.id.btn_call_directo_compat:
+
+                if(ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == (PackageManager.PERMISSION_GRANTED)){
+                    intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:(+34)695103238"));
+                    startActivity(intent);
+                }else{
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, LLAMADA_TELEFONO_DIRECTO);
+                }
+                break;
+
+            case R.id.btn_llamada_url:
+                String url = "https://www.elpais.es";
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                //verificar si hay algun explorado para abrir
+                if(intent.resolveActivity(getPackageManager() )!= null){
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(this, "ESTA ACCION NO SE PUEDE REALIZAR!!", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.btn_posicion_mapa:
+
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:42.25,-8.68"));
+                intent.setPackage("com.google.android.apps.map");
+                if(intent.resolveActivity(getPackageManager() )!= null){
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(this, "ESTA ACCION NO SE PUEDE REALIZAR!!", Toast.LENGTH_SHORT).show();
+                }
 
         }
     }

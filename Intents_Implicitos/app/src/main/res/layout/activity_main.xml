@@ -2,47 +2,77 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_margin="12dp"
     android:gravity="center"
-    android:layout_margin="12dp">
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ejemplos de intents implicitos"
-        android:textSize="20dp"/>
+        android:textSize="20dp" />
+
     <Button
         android:id="@+id/btn_contactos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mostrar lista de contactos"
-        android:onClick="onClickBotones">
+        android:onClick="onClickBotones"
+        android:text="Mostrar lista de contactos">
 
     </Button>
+
     <Button
         android:id="@+id/btn_llamar_dial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Llamada al dial"
-        android:onClick="onClickBotones">
+        android:onClick="onClickBotones"
+        android:text="Llamada al dial">
 
     </Button>
+
     <Button
         android:id="@+id/btn_llamar_dial_con_numero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Llamada al dial con numero premarcado"
-        android:onClick="onClickBotones">
+        android:onClick="onClickBotones"
+        android:text="Llamada al dial con numero premarcado">
 
     </Button>
+
     <Button
         android:id="@+id/btn_call_directo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Llamada directamente a un numero"
-        android:onClick="onClickBotones">
+        android:onClick="onClickBotones"
+        android:text="Llamada directamente a un numero">
 
     </Button>
+
+    <Button
+        android:id="@+id/btn_call_directo_compat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickBotones"
+        android:text="Llamada directa COMPAT">
+
+    </Button>
+
+    <Button
+        android:id="@+id/btn_llamada_url"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickBotones"
+        android:text="Llamada a una WEB">
+
+    </Button><Button
+    android:id="@+id/btn_posicion_mapa"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:onClick="onClickBotones"
+    android:text="Llamada a MAPA">
+
+</Button>
+
 
 
 </LinearLayout>
