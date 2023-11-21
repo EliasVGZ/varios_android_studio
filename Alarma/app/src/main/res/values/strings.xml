@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Alarma</string>
+    <string name="activar_alarma">Activar alarma</string>
+    <string name="prueba_de_alarma">Prueba de alarma</string>
+</resources>
