@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="12dp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ejemplo de intent-filter"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/et_web"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Escribe aqui la pagina web">
+
+    </EditText>
+
+    <Button
+        android:id="@+id/btn_explicito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="IR A WEB DE FORMA EXPLICITA"/>
+    <Button
+        android:id="@+id/btn_implicito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="IR A WEB DE FORMA IMPLICITA"/>
+
+
+
+</LinearLayout>

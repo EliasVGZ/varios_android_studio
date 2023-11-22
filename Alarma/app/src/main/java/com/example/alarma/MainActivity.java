@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
             startActivity(intent);
         }else{
-            Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No existe una aplicacion alarma", Toast.LENGTH_SHORT).show();
         }
     }
 }
