@@ -2,6 +2,7 @@ package com.example.components_basicos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RatingBar;
 import android.widget.Switch;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btn_normal;
     private RadioGroup rg_grupo;
     private RadioButton rbnSi, rbnNo, rbnAveces;
+
+    private RatingBar rating1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sentenciasFind();
         //METODOS PARA ESCUCHADORES
         sentenciasListeners();
+
+        rating1.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+
+                Toast.makeText(MainActivity.this, "Calificación seleccionada: " + rating, Toast.LENGTH_SHORT).show();
+
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("CALIFICACION", rating);
+                // Configurar el resultado y cerrar la actividad
+                setResult(RESULT_OK, resultIntent);
+                finish();
+            }
+        });
     }
 
     private void sentenciasListeners() {
@@ -52,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rbnSi.setOnClickListener(this);
         rbnNo.setOnClickListener(this);
         rbnAveces.setOnClickListener(this);
+        rating1.setOnClickListener(this);
 
 
 
@@ -98,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rbnSi = findViewById(R.id.rbnsi);
         rbnNo =findViewById(R.id.rbno);
         rbnAveces = findViewById(R.id.rbaveces);
+        this.rating1 = findViewById(R.id.rating1);
     }
 
     //PROBANDO LAS TOAST
@@ -142,6 +162,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "onclik boton no", Toast.LENGTH_SHORT).show();
         }else if(v.getId() == R.id.rbaveces){
             Toast.makeText(this, "onclick boton a veces", Toast.LENGTH_SHORT).show();
+        }else if(v.getId() == R.id.rating1){
+
+            float calificacion = rating1.getRating();
+            // Aquí puedes usar 'calificacion' como sea necesario
+            Toast.makeText(this, "Calificación seleccionada: " + calificacion, Toast.LENGTH_SHORT).show();
+
         }
     }
 

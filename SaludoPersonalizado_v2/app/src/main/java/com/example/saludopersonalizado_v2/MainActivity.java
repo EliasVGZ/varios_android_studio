@@ -14,8 +14,7 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnSaludar;
     private String DatoAEnviar;
@@ -116,11 +115,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onActivityResult(requestCode, resultCode, data);
 
         //RESPUESTA DE LA ACTIVITY 2
-        if(requestCode == CODIGO_LLAMADA_ACT2){
-            if(resultCode == RESULT_OK){
+        if (requestCode == CODIGO_LLAMADA_ACT2) {
+            if (resultCode == RESULT_OK) {
                 TextView tvRespuesta = findViewById(R.id.tvRespuestaAct2);
                 tvRespuesta.setText(data.getStringExtra("respuesta"));
-            }else{
+            } else {
                 TextView tvRespuestaNegativa = findViewById(R.id.tvRespuestaAct2);
                 tvRespuestaNegativa.setText("El usuario no ha contestado");
                 //Toast.makeText(this, "Mensaje no recibido", Toast.LENGTH_SHORT).show();

@@ -11,38 +11,41 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <EditText
             android:id="@+id/et_nombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nombre"
-            android:layout_marginBottom="10dp">
-        </EditText>
+            android:layout_marginBottom="10dp"></EditText>
+
         <EditText
             android:id="@+id/et_nacimiento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Año de nacimiento"
             android:inputType="number"
-            android:layout_marginBottom="10dp">
-        </EditText>
+            android:layout_marginBottom="10dp"></EditText>
+
         <RadioGroup
             android:id="@+id/rg_grupo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="20dp">
+
             <RadioButton
                 android:id="@+id/rbnSra"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sra."
-                android:checked="true"/>
+                android:checked="true" />
+
             <RadioButton
                 android:id="@+id/rbnSr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sr"/>
+                android:text="Sr" />
 
         </RadioGroup>
 
@@ -53,8 +56,8 @@
             android:layout_height="wrap_content"
             android:text="SALUDAR"
             android:layout_gravity="center"
-            android:layout_marginBottom="20dp">
-        </Button>
+            android:layout_marginBottom="20dp"></Button>
+
         <TextView
             android:id="@+id/tvRespuestaAct2"
             android:layout_width="wrap_content"

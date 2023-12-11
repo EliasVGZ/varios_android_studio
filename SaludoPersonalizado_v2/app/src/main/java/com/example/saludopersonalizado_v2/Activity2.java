@@ -1,7 +1,5 @@
 package com.example.saludopersonalizado_v2;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-public class Activity2 extends AppCompatActivity implements View.OnClickListener{
+import androidx.appcompat.app.AppCompatActivity;
+
+public class Activity2 extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnFinalizar;
     private CheckBox chkDespedida;
@@ -45,17 +45,17 @@ public class Activity2 extends AppCompatActivity implements View.OnClickListener
         String mensajeRecibido = bundle.getString("mensaje");
 
         //EN UNA SOLA SENTENCIA
-        String datoRecibido=getIntent().getExtras().getString("mensaje");
+        String datoRecibido = getIntent().getExtras().getString("mensaje");
 
-        TextView tvRecibida=findViewById(R.id.tvMensajeRecibidoAct2);
+        TextView tvRecibida = findViewById(R.id.tvMensajeRecibidoAct2);
         tvRecibida.setText(mensajeRecibido);
 
         chkDespedida.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
+                if (isChecked) {
                     llDespedida.setVisibility(View.VISIBLE);
-                }else{
+                } else {
                     llDespedida.setVisibility(View.GONE);
                 }
             }
@@ -64,16 +64,16 @@ public class Activity2 extends AppCompatActivity implements View.OnClickListener
 
     }
 
-   @Override
+    @Override
     public void onClick(View v) {
 
-        if(v.getId() == R.id.btnFinalizar){
-            if(!chkDespedida.isChecked()){
+        if (v.getId() == R.id.btnFinalizar) {
+            if (!chkDespedida.isChecked()) {
                 datoRespuesta = "El usuario no quiso despedida";
                 Intent intentRespuesta = new Intent();
                 intentRespuesta.putExtra("respuesta", datoRespuesta);
                 setResult(RESULT_OK, intentRespuesta);
-            }else {
+            } else {
                 String mensajeSaludo = "";
                 if (rbnAdios.isChecked()) {
                     mensajeSaludo = "Adios";
@@ -89,7 +89,7 @@ public class Activity2 extends AppCompatActivity implements View.OnClickListener
             setResult(RESULT_OK, intentRespuesta);
 
             finish();
-        }else{
+        } else {
             Intent intentRespuesta = new Intent();
             datoRespuesta = "El usuario no ha contestado";
             intentRespuesta.putExtra("respuesta", datoRespuesta);

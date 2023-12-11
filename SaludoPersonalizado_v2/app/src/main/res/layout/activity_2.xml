@@ -5,11 +5,13 @@
     android:layout_height="match_parent"
     android:background="#FFEB3B"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#673AB7"
         android:layout_gravity="top">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,6 +31,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center">
+
         <TextView
             android:id="@+id/tvMensajeRecibidoAct2"
             android:layout_width="wrap_content"
@@ -38,6 +41,7 @@
             android:layout_gravity="center">
 
         </TextView>
+
         <CheckBox
             android:id="@+id/chkDespedida"
             android:layout_width="wrap_content"
@@ -46,12 +50,14 @@
             android:layout_marginBottom="10dp">
 
         </CheckBox>
+
         <LinearLayout
             android:id="@+id/llDespedida"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:visibility="gone">
+
             <TextView
                 android:id="@+id/tvElegir"
                 android:layout_width="wrap_content"
@@ -68,17 +74,19 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="20dp"
                 android:gravity="center">
+
                 <RadioButton
                     android:id="@+id/rbnAdios"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Adios"
-                    android:checked="true"/>
+                    android:checked="true" />
+
                 <RadioButton
                     android:id="@+id/rbnHastaPronto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hasta Pronto"/>
+                    android:text="Hasta Pronto" />
 
             </RadioGroup>
 
@@ -89,8 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Finalizar"
-            android:layout_gravity="center">
-        </Button>
+            android:layout_gravity="center"></Button>
 
 
     </LinearLayout>
