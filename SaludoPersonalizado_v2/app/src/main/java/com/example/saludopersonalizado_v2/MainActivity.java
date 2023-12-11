@@ -77,8 +77,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         intent.putExtras(bundle);
 
                         startActivityForResult(intent, CODIGO_LLAMADA_ACT2);
-
-
                     } else {
                         Toast.makeText(MainActivity.this, "Faltan datos", Toast.LENGTH_SHORT).show();
                     }
