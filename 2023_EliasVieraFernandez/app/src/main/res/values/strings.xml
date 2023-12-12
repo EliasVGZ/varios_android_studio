@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">2023_EliasVieraFernandez</string>
+    <string name="calculo_imc">Calculo_IMC</string>
+    <string name="imc">IMC</string>
+    <string name="calcular_imc">Calcular IMC</string>
+    <string name="mas_informacion">Más informacion</string>
+    <string name="calcular">CALCULAR</string>
+    <string name="informacion">INFORMACION</string>
+    <string name="metros">Metros</string>
+    <string name="kg">Kg</string>
+    <string name="fin_app">FIN APP</string>
+    <string name="resultado">Resultado</string>
+    <string name="mas_info">Mas info.</string>
+    <string name="sist_metrico">SIST. METRICO</string>
+</resources>

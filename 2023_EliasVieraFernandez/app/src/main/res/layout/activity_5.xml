@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#673AB7">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#673AB7"
+        android:layout_gravity="top">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mas_info"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:padding="10dp">
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="30dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/imc"
+            android:textSize="50sp"
+            android:layout_margin="20dp">
+        </TextView>
+        <RadioGroup
+            android:id="@+id/rg_grupo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp"
+            android:gravity="center">
+
+            <RadioButton
+                android:id="@+id/rbn_web"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="https://es.wikipedia.org/wiki/Indice_de_masa_corporal"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/rbn_tel"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="OMS Madrid - 915555555" />
+        </RadioGroup>
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK">
+        </Button>
+        <Button
+            android:id="@+id/btn_atras"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ATRAS">
+        </Button>
+
+    </LinearLayout>
+
+</LinearLayout>
