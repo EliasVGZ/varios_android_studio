@@ -2,6 +2,7 @@ package com.example.cambiodemoneda;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -28,10 +29,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         sentenciasFind();
         sentenciasSetOnClick();
-
-
-
-
     }
 
     private void sentenciasFind() {
@@ -53,25 +50,70 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvCambio.setOnClickListener(this);
     }
 
+    /**
+     * COMO PASAR VARIOS BUNDLES A OTRA ACTIVITY
+     *
+     * // Crear el primer Bundle
+     * Bundle bundle1 = new Bundle();
+     * bundle1.putString("clave1", "valor1");
+     * bundle1.putInt("clave2", 42);
+     *
+     * // Crear el segundo Bundle
+     * Bundle bundle2 = new Bundle();
+     * bundle2.putString("clave3", "valor3");
+     * bundle2.putBoolean("clave4", true);
+     *
+     * // Crear el Intent y adjuntar ambos Bundles
+     * Intent intent = new Intent(this, TuOtraActividad.class);
+     * intent.putExtras(bundle1);
+     * intent.putExtras(bundle2);
+     *
+     * // Iniciar la nueva actividad con el Intent que contiene ambos Bundles
+     * startActivity(intent);
+     *
+     * Y A LA HORA DE RECIBIRLO EN EL OTRO ACTIVITY
+     *
+     * // En la actividad receptora
+     * Bundle bundle1 = getIntent().getExtras();
+     * if (bundle1 != null) {
+     *     String valor1 = bundle1.getString("clave1");
+     *     int valor2 = bundle1.getInt("clave2");
+     *     // Hacer algo con los datos del primer Bundle
+     * }
+     *
+     * Bundle bundle2 = getIntent().getExtras();
+     * if (bundle2 != null) {
+     *     String valor3 = bundle2.getString("clave3");
+     *     boolean valor4 = bundle2.getBoolean("clave4");
+     *     // Hacer algo con los datos del segundo Bundle
+     * }
+     *
+     */
+
 
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.btnCambiar){
             String valorMoneda = etValor.getText().toString();
 
+            // Reemplazar comas por puntos
+            valorMoneda = valorMoneda.replace(",", ".");
+
             if(!valorMoneda.isEmpty()){
                 tvCambio.setVisibility(View.VISIBLE);
                 Double valorM = Double.parseDouble(valorMoneda);
-                String mensajeMoneda = null;
+
 
                 if(rbnPeseta.isChecked()){
                     Double euros = pesetaAeuros(valorM);
-                    String textoFormateado = String.format("%.2f", euros); //dos digitos como maxIMO
+                    @SuppressLint("DefaultLocale") String textoFormateado = String.format("%.2f", euros); //dos digitos como maxIMO
                     DatoAEnviar = valorM + " Pesetas equivalen a " + textoFormateado + " euros";
+
                 }else if(rbnEuro.isChecked()){
                     Double pesetas = eurosApestas(valorM);
-                    String textoFormateado = String.format("%.2f", pesetas);
+                    @SuppressLint("DefaultLocale") String textoFormateado = String.format("%.2f", pesetas);
                     DatoAEnviar = valorM + " Euros equivalen a " + textoFormateado + " pesetas";
+
                 }
 
 
@@ -92,15 +134,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public Double pesetaAeuros(double pesetas){
-
-        Double euros = pesetas / 166.38;
-        euros = Double.parseDouble(String.format("%.2f", euros)); //MAXIMO 2 DECIMALES
-        return euros;
+        return pesetas / 166.38;
     }
 
     public double eurosApestas(double euros){
-        Double pesetas = euros * 166.38;
-        pesetas = Double.parseDouble(String.format("%.2f", pesetas));
-        return pesetas;
+        return euros * 166.38;
     }
+
 }
