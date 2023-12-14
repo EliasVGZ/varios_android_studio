@@ -5,12 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#673AB7">
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#673AB7"
-        android:layout_gravity="top">
+        android:layout_gravity="top"
+        android:orientation="horizontal">
+
         <TextView
+            android:id="@+id/tv_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/calculo_imc"
@@ -19,16 +23,21 @@
             android:textColor="@color/white"
             android:layout_gravity="center"
             android:padding="10dp">
+
         </TextView>
+
         <Button
             android:id="@+id/sis_metrico"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sist_metrico">
+            android:text="@string/sist_metrico"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true">
 
         </Button>
 
-    </LinearLayout>
+    </RelativeLayout>
+
 
     <LinearLayout
         android:id="@+id/ll1"
@@ -36,51 +45,56 @@
         android:layout_height="match_parent"
         android:layout_margin="30dp"
         android:background="@color/white"
-        android:orientation="vertical"
         android:gravity="center"
-        android:visibility="visible"
-        >
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:text="@string/imc"
-            android:textSize="50sp"
-            android:layout_margin="20dp">
+            android:textSize="50sp">
+
         </TextView>
+
         <EditText
             android:id="@+id/et_metros"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:hint="@string/metros"
-            android:inputType="numberDecimal"
-            android:layout_marginBottom="10dp">
+            android:inputType="numberDecimal">
 
         </EditText>
+
         <EditText
             android:id="@+id/et_kg"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:hint="@string/kg"
-            android:inputType="numberDecimal"
-            android:layout_marginBottom="10dp">
+            android:inputType="numberDecimal">
 
         </EditText>
+
         <Button
             android:id="@+id/btn_calcular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/calcular">
+
         </Button>
+
         <Button
             android:id="@+id/btn_fin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/fin_app">
+
         </Button>
 
     </LinearLayout>
-
 
     <LinearLayout
         android:id="@+id/ll2"
@@ -98,37 +112,42 @@
             android:text="@string/imc"
             android:textSize="50sp"
             android:layout_margin="20dp">
+
         </TextView>
+
         <EditText
             android:id="@+id/et_pulgadas"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="@string/metros"
+            android:hint="@string/pulgadas"
             android:inputType="numberDecimal"
             android:layout_marginBottom="10dp">
 
         </EditText>
+
         <EditText
             android:id="@+id/et_libras"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="@string/kg"
+            android:hint="@string/libras"
             android:inputType="numberDecimal"
             android:layout_marginBottom="10dp">
 
         </EditText>
+
         <Button
             android:id="@+id/btn_calcular2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/calcular">
+
         </Button>
+
         <Button
             android:id="@+id/btn_fin2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/fin_app">
-        </Button>
+            android:text="@string/fin_app"></Button>
 
     </LinearLayout>
 

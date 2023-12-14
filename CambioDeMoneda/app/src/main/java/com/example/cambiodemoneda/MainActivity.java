@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             if(!valorMoneda.isEmpty()){
                 tvCambio.setVisibility(View.VISIBLE);
-                Double valorM = Double.parseDouble(valorMoneda);
+                double valorM = Double.parseDouble(valorMoneda);
 
 
                 if(rbnPeseta.isChecked()){

@@ -5,11 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#673AB7">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#673AB7"
         android:layout_gravity="top">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -18,8 +20,7 @@
             android:textSize="15sp"
             android:textColor="@color/white"
             android:layout_gravity="center"
-            android:padding="10dp">
-        </TextView>
+            android:padding="10dp"></TextView>
     </LinearLayout>
 
     <LinearLayout
@@ -34,28 +35,32 @@
             android:id="@+id/tv_imc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/imc"
+            android:text="IMC"
             android:textSize="50sp"
             android:layout_margin="20dp">
+
         </TextView>
+
         <ImageButton
             android:id="@+id/ib_normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/imc_correcto"
-            android:visibility="gone"/>
+            android:visibility="gone" />
+
         <ImageButton
             android:id="@+id/ib_sobrespo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/imc_sobrepeso"
-            android:visibility="gone"/>
+            android:visibility="gone" />
+
         <ImageButton
             android:id="@+id/ib_obesidad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/imc_obesidad"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
 
         <EditText

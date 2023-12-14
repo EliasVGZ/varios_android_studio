@@ -12,4 +12,6 @@
     <string name="resultado">Resultado</string>
     <string name="mas_info">Mas info.</string>
     <string name="sist_metrico">SIST. METRICO</string>
+    <string name="libras">Libras</string>
+    <string name="pulgadas">Pulgadas</string>
 </resources>
