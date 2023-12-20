@@ -20,7 +20,9 @@
             android:textSize="15sp"
             android:textColor="@color/white"
             android:layout_gravity="center"
-            android:padding="10dp"></TextView>
+            android:padding="10dp">
+
+        </TextView>
     </LinearLayout>
 
     <ImageButton
@@ -29,7 +31,9 @@
         android:layout_height="match_parent"
         android:background="@mipmap/logo"
         android:layout_margin="30dp"
-        android:visibility="visible"></ImageButton>
+        android:visibility="visible">
+
+    </ImageButton>
 
     <!-- AQUI COMIENZA EL LINEARLAYOUT GONE -->
     <LinearLayout
@@ -47,7 +51,9 @@
             android:layout_height="wrap_content"
             android:text="@string/imc"
             android:textSize="50sp"
-            android:layout_margin="20dp"></TextView>
+            android:layout_margin="20dp">
+
+        </TextView>
 
         <RadioGroup
             android:id="@+id/rg_grupo"
@@ -75,7 +81,9 @@
             android:id="@+id/btn_vacio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""></Button>
+            android:text="@string/calcular">
+
+        </Button>
 
     </LinearLayout>
 

@@ -73,7 +73,7 @@ public class Activity5 extends AppCompatActivity implements View.OnClickListener
 
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:(+34)695103238"));
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:(+34)915555555"));
                 startActivity(intent);
                 Toast.makeText(this, "El usuario ha aceptado el permiso de llamada", Toast.LENGTH_SHORT).show();
             } else {

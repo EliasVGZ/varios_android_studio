@@ -20,7 +20,9 @@
             android:textSize="15sp"
             android:textColor="@color/white"
             android:layout_gravity="center"
-            android:padding="10dp"></TextView>
+            android:padding="10dp">
+
+        </TextView>
     </LinearLayout>
 
     <LinearLayout
@@ -36,7 +38,9 @@
             android:layout_height="wrap_content"
             android:text="@string/imc"
             android:textSize="50sp"
-            android:layout_margin="20dp"></TextView>
+            android:layout_margin="20dp">
+
+        </TextView>
 
         <RadioGroup
             android:id="@+id/rg_grupo"
@@ -64,13 +68,17 @@
             android:id="@+id/btn_ok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="OK"></Button>
+            android:text="OK">
+
+        </Button>
 
         <Button
             android:id="@+id/btn_atras"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ATRAS"></Button>
+            android:text="ATRAS">
+
+        </Button>
 
     </LinearLayout>
 

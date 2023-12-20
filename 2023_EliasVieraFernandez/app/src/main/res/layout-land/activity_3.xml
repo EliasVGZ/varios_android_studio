@@ -3,48 +3,36 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#673AB7">
+    android:background="#673AB7"
+    android:orientation="horizontal"
+    android:padding="30dp">
+
+
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#673AB7"
-        android:layout_gravity="top">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/calculo_imc"
-            android:textStyle="bold"
-            android:textSize="15sp"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:padding="10dp"></TextView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_margin="30dp"
+
         android:background="@color/white"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:text="@string/imc"
-            android:textSize="50sp"
-            android:layout_margin="20dp"></TextView>
+            android:textSize="50sp">
+
+        </TextView>
 
         <EditText
             android:id="@+id/et_metros"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:hint="@string/metros"
-            android:inputType="numberDecimal"
-            android:layout_marginBottom="10dp">
+            android:inputType="numberDecimal">
 
         </EditText>
 
@@ -52,24 +40,39 @@
             android:id="@+id/et_kg"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:hint="@string/kg"
-            android:inputType="numberDecimal"
-            android:layout_marginBottom="10dp">
+            android:inputType="numberDecimal">
 
         </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/btn_calcular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/calcular"></Button>
+            android:text="@string/calcular">
+
+        </Button>
 
         <Button
             android:id="@+id/btn_fin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/fin_app"></Button>
+            android:text="@string/fin_app">
+
+        </Button>
 
     </LinearLayout>
+
 
 </LinearLayout>
