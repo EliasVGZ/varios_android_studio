@@ -22,8 +22,8 @@ public class Spinner_2_Activity extends AppCompatActivity {
 
         String[] arrayPlanetas = {"Mercurio", "Venis", "Tierra", "Marte", "Saturno", "Júpiter", "Urano", "Neptuno", "Saturno"};
 
-        //utilizar un adaptador `para coger datos del array
-        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,arrayPlanetas);
+        //utilizar un adaptador `para coger datos del array.
+        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,arrayPlanetas);
 
         //ASGINAR ADAPTADOR AL SPINNER
         spPlanetas2.setAdapter(adaptador);

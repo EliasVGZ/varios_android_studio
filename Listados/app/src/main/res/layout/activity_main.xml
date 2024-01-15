@@ -27,5 +27,29 @@
         android:layout_margin="10dp">
 
     </Button>
+    <Button
+        android:id="@+id/btn3_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Spinner con array desde recurso"
+        android:layout_margin="10dp">
+
+    </Button>
+    <Button
+        android:id="@+id/btn4_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Spinner DINAMICO¿? "
+        android:layout_margin="10dp">
+
+    </Button>
+    <Button
+        android:id="@+id/btn5_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Spinner DINAMICO AÑADIENDO COLORES "
+        android:layout_margin="10dp">
+
+    </Button>
 
 </LinearLayout>
