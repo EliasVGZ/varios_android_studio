@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner spProvincia, spLocalidad;
     private String[] arrayLocalidades;
     ArrayAdapter<CharSequence> adaptadorProvincias;
+    private String provinciaSeleccionada;
 
 
     @Override
@@ -31,10 +32,13 @@ public class MainActivity extends AppCompatActivity {
         adaptadorProvincias = ArrayAdapter.createFromResource(this, R.array.provincias, android.R.layout.simple_spinner_dropdown_item);
 
         spProvincia.setAdapter(adaptadorProvincias);
+
         spProvincia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String elementoSeleccionado = spProvincia.getSelectedItem().toString();//CASTEAMOS A STRING
+                provinciaSeleccionada = spProvincia.getSelectedItem().toString();//CASTEAMOS A STRING
+
+                //SELECCIONA LA POSICION DENTRO DEL ARRAY PROVINCIA Y SE LE ASIGNA LOS OTROS ARRAYS(localidades) A ESA PROVINCIA
                 switch (spProvincia.getSelectedItemPosition()) {
                     case 0:
                         arrayLocalidades = getResources().getStringArray(R.array.localidadPontevedra);
@@ -50,12 +54,12 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
 
+                //TODO, POR QUÉ ESTE NO FUNCIONABA????????
+                //ArrayAdapter<CharSequence> adaptadorLocalidad = ArrayAdapter.createFromResource(MainActivity.this, arrayLocalidades, android.R.layout.simple_spinner_item);
+
                 // Configura un adaptador para el segundo Spinner (localidades)
                 ArrayAdapter<String> localidadAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_item, arrayLocalidades);
-                localidadAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spLocalidad.setAdapter(localidadAdapter);
-
-                Toast.makeText(MainActivity.this, "Has elegido " + elementoSeleccionado, Toast.LENGTH_SHORT).show();
             }
 
 
@@ -68,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String localidad = spLocalidad.getSelectedItem().toString();
-                Toast.makeText(MainActivity.this, "Has seleccionado: "+localidad, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Provincia: "+provinciaSeleccionada+ "\n"+ "Localidad: "+localidad, Toast.LENGTH_SHORT).show();
             }
 
             @Override
