@@ -10,26 +10,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Listados"
+        android:theme="@style/Theme.ProvinciasYLocalidades"
         tools:targetApi="31">
-        <activity
-            android:name=".ListView_1_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Spinner_5_DinamicoAcitivity"
-            android:exported="false" />
-        <activity
-            android:name=".Spinner_4_DinamicoFigurado"
-            android:exported="false" />
-        <activity
-            android:name=".Spinner_3_ActivityDesdeRecurso"
-            android:exported="false" />
-        <activity
-            android:name=".Spinner_2_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Spinner_1_Activity"
-            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

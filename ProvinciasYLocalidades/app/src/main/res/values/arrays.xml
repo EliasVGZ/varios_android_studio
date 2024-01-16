@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="provincias">
+        <item>Pontevedra</item>
+        <item>A Coruña</item>
+        <item>Ourense</item>
+        <item>Lugo</item>
+    </string-array>
+    <string-array name="localidadPontevedra">
+        <item>Vigo</item>
+        <item>Marín</item>
+        <item>Sanxenxo</item>
+        <item>Poio</item>
+    </string-array>
+    <string-array name="localidadLugo">
+        <item>Lugo</item>
+        <item>Monforte de Lemos</item>
+        <item>Sarria</item>
+        <item>Viveiro</item>
+    </string-array>
+    <string-array name="localidadCoruña">
+        <item>A Coruña</item>
+        <item>Santiago de Compostela</item>
+        <item>Ferrol</item>
+        <item>Oleiros</item>
+    </string-array>
+    <string-array name="localidadOurense">
+        <item>Ourense</item>
+        <item>Verín</item>
+        <item>O Barco de Valdeorras</item>
+        <item>Ribadavia</item>
+    </string-array>
+
+
+</resources>

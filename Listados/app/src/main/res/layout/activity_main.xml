@@ -51,5 +51,20 @@
         android:layout_margin="10dp">
 
     </Button>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/black"
+        android:layout_margin="15dp"/>
+
+    <!--GESTION DE LISTVIEW-->
+    <Button
+        android:id="@+id/btn1_listview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LISTVIEW"
+        android:layout_margin="10dp">
+
+    </Button>
 
 </LinearLayout>

@@ -39,9 +39,7 @@ public class Spinner_5_DinamicoAcitivity extends AppCompatActivity implements Vi
 
         arrayListColores = new ArrayList<>();
 
-        //arrayListColores.add("");
         adaptador = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, arrayListColores);
-
         spDinamico.setAdapter(adaptador);
 
         spDinamico.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -66,17 +64,22 @@ public class Spinner_5_DinamicoAcitivity extends AppCompatActivity implements Vi
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_aceptar:
-                String colores = et_colores.getText().toString();
+                String colores = et_colores.getText().toString();//Recoge los datos que el usuario escribe!
+
                 if(!colores.isEmpty()){
-                    if (arrayListColores.contains(colores)) {
-                        Toast.makeText(this, "El color ya está en la lista", Toast.LENGTH_SHORT).show();
+                    if (arrayListColores.contains(colores)) {//SI EL COLOR YA ESTÁ ME SALTA EL AVISO
+                        Toast.makeText(this, "El color ya esta en la lista", Toast.LENGTH_SHORT).show();
                     } else {
+                        if(spDinamico.getVisibility() != View.VISIBLE){
+                            spDinamico.setVisibility(View.VISIBLE);
+                        }
                         arrayListColores.add(colores);
                         et_colores.setText("");
                         //TODO si no añado un item vacio no me salta el toast en el momento de seleccionar uno, se tiene que actualizar con notifyDataSetChanged()
                         // Notificar al adaptador que los datos han cambiado
+
                         adaptador.notifyDataSetChanged();
-                        spDinamico.setVisibility(View.VISIBLE);
+
                     }
                 } else {
                     Toast.makeText(this, "Color está vacío", Toast.LENGTH_SHORT).show();

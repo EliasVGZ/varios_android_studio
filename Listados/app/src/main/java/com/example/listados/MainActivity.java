@@ -10,7 +10,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button btn_spinner, btn2_spinner, btn3_spinner, btn4_spinner, btn5_spinner;
+    private Button btn_spinner, btn2_spinner, btn3_spinner, btn4_spinner, btn5_spinner, btn1_listview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +22,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn3_spinner = findViewById(R.id.btn3_spinner);
         btn4_spinner = findViewById(R.id.btn4_spinner);
         btn5_spinner = findViewById(R.id.btn5_spinner);
+        btn1_listview = findViewById(R.id.btn1_listview);
 
         btn_spinner.setOnClickListener(this);
         btn2_spinner.setOnClickListener(this);
         btn3_spinner.setOnClickListener(this);
         btn4_spinner.setOnClickListener(this);
         btn5_spinner.setOnClickListener(this);
+        btn1_listview.setOnClickListener(this);
 
     }
 
@@ -50,6 +52,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn5_spinner:
                 intent.setClass(this, Spinner_5_DinamicoAcitivity.class);
                 break;
+            //gestion de listas
+            case R.id.btn1_listview:
+                intent.setClass(this, ListView_1_Activity.class);
+                break;
+
         }//end swtich
         startActivity(intent);
 
