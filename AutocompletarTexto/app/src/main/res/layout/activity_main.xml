@@ -10,15 +10,17 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LIST VIEW 2"
-        android:layout_margin="15dp"/>
+        android:text="AUTOCOMPLETADO DE TEXTO "
+        android:layout_margin="15dp"
+        android:textSize="20sp" />
 
-    <!-- ELEMENTO listview sin ENTRIES-->
-
-    <ListView
-        android:id="@+id/lv_planetas2"
+    <!-- SE AUTOCoMPLETA CON COMPLETIONTHRESHOLD = 1-->
+    <AutoCompleteTextView
+        android:id="@+id/ac_nombres"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:hint="Introduce el nombre"
+        android:completionThreshold="1"/>
 
 
 

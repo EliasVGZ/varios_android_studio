@@ -10,7 +10,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button btn_spinner, btn2_spinner, btn3_spinner, btn4_spinner, btn5_spinner, btn1_listview;
+    private Button btn_spinner, btn2_spinner, btn3_spinner, btn4_spinner, btn5_spinner, btn1_listview, btn2_listview, btn3_listview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn4_spinner = findViewById(R.id.btn4_spinner);
         btn5_spinner = findViewById(R.id.btn5_spinner);
         btn1_listview = findViewById(R.id.btn1_listview);
+        btn2_listview = findViewById(R.id.btn2_listview);
+        btn3_listview = findViewById(R.id.btn3_listview);
+
 
         btn_spinner.setOnClickListener(this);
         btn2_spinner.setOnClickListener(this);
@@ -30,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn4_spinner.setOnClickListener(this);
         btn5_spinner.setOnClickListener(this);
         btn1_listview.setOnClickListener(this);
+        btn2_listview.setOnClickListener(this);
+        btn3_listview.setOnClickListener(this);
 
     }
 
@@ -55,6 +60,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //gestion de listas
             case R.id.btn1_listview:
                 intent.setClass(this, ListView_1_Activity.class);
+                break;
+            case R.id.btn2_listview:
+                intent.setClass(this, ListView_2_Activity.class);
+                break;
+            case R.id.btn3_listview:
+                intent.setClass(this, ListView_3_Dinamica_Activity.class);
                 break;
 
         }//end swtich

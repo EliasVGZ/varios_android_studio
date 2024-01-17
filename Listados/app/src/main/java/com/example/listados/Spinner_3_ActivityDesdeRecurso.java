@@ -22,7 +22,7 @@ public class Spinner_3_ActivityDesdeRecurso extends AppCompatActivity {
         //TODO METODO 1 -> createFromResource(), contexto, ubicacion del array, y el layout que genera el IDE
         //ArrayAdapter<CharSequence> adaptador = ArrayAdapter.createFromResource(this, R.array.planetas, android.R.layout.simple_spinner_dropdown_item);
 
-        //TODO: Metodo 2-> Otra forma de recuperar el array en recurso
+        //TODO: Metodo 2-> Otra forma de recuperar el array en recurso, si tienes array estatico o dinamico se debe usar este
         ArrayAdapter<String> adaptador2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,
                 getResources().getStringArray(R.array.planetas));
 

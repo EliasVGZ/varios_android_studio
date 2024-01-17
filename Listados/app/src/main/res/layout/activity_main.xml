@@ -62,7 +62,23 @@
         android:id="@+id/btn1_listview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LISTVIEW"
+        android:text="LISTVIEW con spiner"
+        android:layout_margin="10dp">
+
+    </Button>
+    <Button
+        android:id="@+id/btn2_listview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LISTVIEW DESDE RECURSO"
+        android:layout_margin="10dp">
+
+    </Button>
+    <Button
+        android:id="@+id/btn3_listview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LISTVIEW CREACION DINAMICA"
         android:layout_margin="10dp">
 
     </Button>

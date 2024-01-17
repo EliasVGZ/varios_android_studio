@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LISTVIEW -DINAMICO "
+        android:layout_margin="15dp"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/et_planetas3"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="Escribe el planeta"
+        android:inputType="textCapWords">
+    </EditText>
+
+    <Button
+        android:id="@+id/btn_aceptar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ACEPTAR "
+        android:layout_margin="10dp">
+    </Button>
+
+    <ListView
+        android:id="@+id/lv_planetas3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</LinearLayout>
