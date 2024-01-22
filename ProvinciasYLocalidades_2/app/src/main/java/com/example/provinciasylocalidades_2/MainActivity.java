@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-                // Configura un adaptador para el segundo Spinner (localidades)
+                // adaptador para el segundo Spinner (localidades)
                 localidadAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_item, arrayLocalidades);
                 spLocalidad.setAdapter(localidadAdapter);
             }
@@ -73,11 +73,9 @@ public class MainActivity extends AppCompatActivity {
                 // localidad seleccionada
                 String localidadSeleccionada = parent.getItemAtPosition(position).toString();
 
-
                 String mensaje = "Provincia: " + provinciaSeleccionada + ", Localidad: " + localidadSeleccionada;
                 Toast.makeText(MainActivity.this, mensaje, Toast.LENGTH_SHORT).show();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }

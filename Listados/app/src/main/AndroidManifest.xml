@@ -13,28 +13,37 @@
         android:theme="@style/Theme.Listados"
         tools:targetApi="31">
         <activity
-            android:name=".ListView_3_Dinamica_Activity"
+            android:name="listviews.ListView_5_combox"
             android:exported="false" />
         <activity
-            android:name=".ListView_2_Activity"
+            android:name="spinners.Spinner_6_combox"
             android:exported="false" />
         <activity
-            android:name=".ListView_1_Activity"
+            android:name="listviews.ListView_4_Personalizada1"
             android:exported="false" />
         <activity
-            android:name=".Spinner_5_DinamicoAcitivity"
+            android:name="listviews.ListView_3_Dinamica_Activity"
             android:exported="false" />
         <activity
-            android:name=".Spinner_4_DinamicoFigurado"
+            android:name="listviews.ListView_2_Activity"
             android:exported="false" />
         <activity
-            android:name=".Spinner_3_ActivityDesdeRecurso"
+            android:name="listviews.ListView_1_Activity"
             android:exported="false" />
         <activity
-            android:name=".Spinner_2_Activity"
+            android:name="spinners.Spinner_5_DinamicoAcitivity"
             android:exported="false" />
         <activity
-            android:name=".Spinner_1_Activity"
+            android:name="spinners.Spinner_4_DinamicoFigurado"
+            android:exported="false" />
+        <activity
+            android:name="spinners.Spinner_3_ActivityDesdeRecurso"
+            android:exported="false" />
+        <activity
+            android:name="spinners.Spinner_2_Activity"
+            android:exported="false" />
+        <activity
+            android:name="spinners.Spinner_1_Activity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

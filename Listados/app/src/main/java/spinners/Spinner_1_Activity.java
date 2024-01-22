@@ -1,4 +1,4 @@
-package com.example.listados;
+package spinners;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.listados.R;
 
 public class Spinner_1_Activity extends AppCompatActivity {
 
