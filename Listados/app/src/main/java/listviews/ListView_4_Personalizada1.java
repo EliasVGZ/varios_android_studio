@@ -24,8 +24,8 @@ public class ListView_4_Personalizada1 extends AppCompatActivity {
         lv_planetas4 = findViewById(R.id.lv_planetas4);
 
         //TODO CREACION DE MI PROPIO ADAPTADOR, es adaptador del sistema pero algo personalizad, se rellena con layout personalizado que se crea en layout
-        //THIS, LAYOUT PERSONALIZADO, ID DEL TEXTVIEW y el array de recurso
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.fila_simple,  R.id.tv_planeta, getResources().getStringArray(R.array.planetas));
+        //THIS, LAYOUT PERSONALIZADO, ID DEL TEXTVIEW y el array de recurso -> OJO TIENE 4 ATRIBUTOS EN EL CONSTRUCToR
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(ListView_4_Personalizada1.this, R.layout.fila_simple,  R.id.tv_planeta, getResources().getStringArray(R.array.planetas));
 
         lv_planetas4.setAdapter(adapter);
 
