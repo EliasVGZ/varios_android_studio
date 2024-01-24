@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="15dp"
+    android:id="@+id/ll_fila_simple">
+
+    <!-- IMAGEN SE CARGA DINAMICAMENTE en ejecución-->
+    <LinearLayout
+        android:id="@+id/ll_l1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/img_animales"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_animales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"/>
+        <TextView
+            android:id="@+id/tv_infoAnimales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
