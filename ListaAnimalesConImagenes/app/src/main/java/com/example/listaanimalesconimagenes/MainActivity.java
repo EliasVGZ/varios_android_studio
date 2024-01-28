@@ -2,9 +2,7 @@ package com.example.listaanimalesconimagenes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -37,14 +35,10 @@ public class MainActivity extends AppCompatActivity {
         lv_animales.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String animalSeleccionado = Arrays.toString(getResources().getStringArray(R.array.animales));
-                String infoAnimal = getResources().getStringArray(R.array.info).toString();
-
-                Log.d("MainActivity", "Item clicked at position: " + position);
-
-                Toast.makeText(MainActivity.this, "" + animalSeleccionado + "\n" + infoAnimal, Toast.LENGTH_SHORT).show();
+                String animalSeleccionado = parent.getItemAtPosition(position).toString();
+                String infoAnimal = Arrays.toString(getResources().getStringArray(R.array.info));
+                Toast.makeText(MainActivity.this, ""+animalSeleccionado + "\n"+ infoAnimal, Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 }
