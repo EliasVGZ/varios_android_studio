@@ -32,6 +32,12 @@
         <item>@drawable/perro</item>
         <item>@drawable/vaca</item>
     </array>
+    <array name="colores">
+        <item>@drawable/color_azul</item>
+        <item>@drawable/color_rosa</item>
+        <item>@drawable/color_verde</item>
+
+    </array>
 
 
 </resources>
