@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,19 +63,24 @@ public class AdaptadorPersonalizado_Animales extends ArrayAdapter {
         LinearLayout linearCambiarFondo = fila.findViewById(R.id.ll_cambiar_color);
 
         tvAnimales.setText(arrayAnimales[position]);
-        imgAnimales.setImageDrawable(arrayIdFotosAnimales.getDrawable(position));
         tvinfo.setText(animalesInfo[position]);
+        imgAnimales.setImageDrawable(arrayIdFotosAnimales.getDrawable(position));
 
-        //imgColores.setImageDrawable(colores.getDrawable(position));
 
-        //Todo cambiar background
+
+
+
+//        //Todo cambiar background
         int colorFondo =  position % 2 == 0 ? R.color.celeste : R.color.celesteclaro;
         int colorB = ContextCompat.getColor(context, colorFondo);
         linearCambiarFondo.setBackgroundColor(colorB);
 
-        // Obtener el índice del color de forma cíclica
+         //Obtener el índice del color de forma cíclica
         int indiceColor = position % colores.length();
         imgColores.setImageDrawable(colores.getDrawable(indiceColor));
+
+        Log.d("AdaptadorPersonalizado", "Animal en posición " + position + ": " + arrayAnimales[position]);
+        Log.d("AdaptadorPersonalizado", "Información del animal en posición " + position + ": " + animalesInfo[position]);
 
         return fila;
     }

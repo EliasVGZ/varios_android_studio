@@ -82,6 +82,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ListView PERSONALIZADA Imagen por planeta con TypedArray" />
+    <Button
+        android:id="@+id/btn7_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ListView PERSONALIZADA CON ARRAYLIST" />
 
 
 </LinearLayout>

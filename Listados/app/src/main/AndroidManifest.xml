@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Listados"
         tools:targetApi="31">
         <activity
+            android:name="listviews.ListView_7_Personalizado3_ArrayList"
+            android:exported="false" />
+        <activity
             android:name="listviews.ListView_6_Personalizada2_DiferentesImagenes_TypedArray"
             android:exported="false" />
         <activity

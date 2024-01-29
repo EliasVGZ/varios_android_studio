@@ -29,7 +29,7 @@ public class ListView_6_Personalizada2_DiferentesImagenes_TypedArray extends App
         AdaptadorPersonalizado_2_TypedArray adaptador = new AdaptadorPersonalizado_2_TypedArray(
                 this,
                 R.layout.fila_diferentes_imagenes_y_texto,
-                getResources().getStringArray(R.array.planetas),
+                getResources().getStringArray(R.array.planetas),//TEXTO
                 getResources().obtainTypedArray(R.array.fotos_planetas)//OJO, Aqui es obtainTypedArray + array de imagenes
 
         );

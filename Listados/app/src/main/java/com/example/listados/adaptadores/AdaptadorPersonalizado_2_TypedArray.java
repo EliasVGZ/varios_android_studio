@@ -1,5 +1,6 @@
 package com.example.listados.adaptadores;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -52,6 +53,7 @@ public class AdaptadorPersonalizado_2_TypedArray extends ArrayAdapter {
 
     //Implementar nuestro metodo getView(), se genera con Control + o y luego buscar getView...etc
 
+    @SuppressLint("SetTextI18n")
     @NonNull
     @Override
     public View getView(int position,
@@ -64,11 +66,14 @@ public class AdaptadorPersonalizado_2_TypedArray extends ArrayAdapter {
         //Capturamos los id de cada componente de nuestro layout personlizado -> img_planetas y tv_planeta
         TextView tvPlanetas = fila.findViewById(R.id.tv_planeta);
         ImageView imgPlanetas = fila.findViewById(R.id.img_planetas);
+        TextView tvInfo = fila.findViewById(R.id.tv_infoPlaneta);
 
         //Insertar cada valor (planeta/imagen) en su correspondiente ID
         tvPlanetas.setText(arrayPlanetas[position]);
         imgPlanetas.setImageDrawable(arrayIdFotosPlanetas.getDrawable(position));
+        tvInfo.setText(context.getResources().getString(R.string.info_planetas) + context.getResources().getStringArray(R.array.planetas)[position]);
         //AHORA YA NO FUNCIONA -> imgPlanetas.setImageResource(arrayIdFotosPlanetas[position]);
+
 
 
         return fila;
