@@ -1,4 +1,4 @@
-package com.example.listados;
+package com.example.listados.clases;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.listados.R;
 
 import listviews.ListView_1_Activity;
 import listviews.ListView_2_Activity;

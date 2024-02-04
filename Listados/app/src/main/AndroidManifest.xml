@@ -55,7 +55,7 @@
             android:name="spinners.Spinner_1_Activity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".clases.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

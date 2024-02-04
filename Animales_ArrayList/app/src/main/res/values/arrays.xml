@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="animales">
+        <item>Aguila</item>
+        <item>Ballena</item>
+        <item>Caballo</item>
+        <item>Canario</item>
+        <item>Delfín</item>
+        <item>Gato</item>
+        <item>Perro</item>
+        <item>Vaca</item>
+    </string-array>
+
+    <string-array name="info">
+        <item>Ave rapaz</item>
+        <item>Mamifero marino</item>
+        <item>porte elegante</item>
+        <item>canto espectacular</item>
+        <item>mamifero marino</item>
+        <item>animal domestico</item>
+        <item>perro ladrado poco mordedor</item>
+        <item>la vaca lola</item>
+    </string-array>
+
+    <array name="fotos_animales">
+        <item>@drawable/aguila</item>
+        <item>@drawable/ballena</item>
+        <item>@drawable/caballo</item>
+        <item>@drawable/canario</item>
+        <item>@drawable/delfin</item>
+        <item>@drawable/gato</item>
+        <item>@drawable/perro</item>
+        <item>@drawable/vaca</item>
+    </array>
+    <array name="colores">
+        <item>@drawable/color_azul</item>
+        <item>@drawable/color_rosa</item>
+        <item>@drawable/color_verde</item>
+        <item>@drawable/color_azul</item>
+        <item>@drawable/color_rosa</item>
+        <item>@drawable/color_verde</item>
+        <item>@drawable/color_azul</item>
+        <item>@drawable/color_rosa</item>
+
+
+    </array>
+
+
+</resources>
