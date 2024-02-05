@@ -35,6 +35,13 @@ public class Adaptador_Personalizado_Animales_ArrayList extends ArrayAdapter {
         this.listaAnimales = listaAnimales;
     }
 
+    //TODO CREAMOS UN METODO VIEWHOLDER QUE LO USAREMOS COMO CONTENEDOR DE DATOS
+    //Todo es un wrapper alrededor de una view ue contiene el diseño de un elemento individual de la lista
+    private static class ViewHolder {
+        TextView tvPlanetas;
+        ImageView imgPlanetas;
+    }
+
 
     @NonNull
     @Override

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LIST VIEW ANIMALES CON ARRAYLIST Y VIEWCONTENT"
+        android:layout_margin="15dp"/>
+
+    <!-- ELEMENTO listvie PARA OPTIMIZAR -->
+
+    <ListView
+        android:id="@+id/lv_planetas8"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:dividerHeight="5dp"
+        android:divider="#FFEB3B"/>
+
+
+
+</LinearLayout>
