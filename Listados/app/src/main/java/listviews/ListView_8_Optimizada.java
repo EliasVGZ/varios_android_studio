@@ -1,8 +1,13 @@
 package listviews;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -29,8 +34,9 @@ public class ListView_8_Optimizada extends AppCompatActivity {
         lv_planetas8 = findViewById(R.id.lv_planetas8);
         listadoPlanetas = new ArrayList<>();
 
+        registerForContextMenu(lv_planetas8);
 
-        //int longitud = Math.min(nombres.length, imagenes.length()); TODO VERIFICA QUE AMBOS ARRAYS SEAN IGUALES
+
         int longitud = getResources().getStringArray(R.array.planetas).length;
 
         for (int i = 0; i < longitud; i++) {
@@ -57,4 +63,45 @@ public class ListView_8_Optimizada extends AppCompatActivity {
         });
 
     }
+
+    //Inflar el menu contextual
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu,
+                                    View v, //Recibe la vista pulsada
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        MenuInflater inflater = getMenuInflater();
+
+        AdapterView.AdapterContextMenuInfo info=(AdapterView.AdapterContextMenuInfo)menuInfo;//Castearlo a un ADAPTER
+
+        //String elemento=lv_planetas8.getAdapter().getItem(info.position).toString();//Conssigue nombre del planeta
+        int posicion = info.position;
+        Planetas planeta = (Planetas) lv_planetas8.getAdapter().getItem(posicion);
+        menu.setHeaderTitle(planeta.getNombre());//Escribe el titular con el string que contiene el nombre del planeta
+
+        inflater.inflate(R.menu.menu_contextual1, menu);
+    }
+
+    //Listener para el menu contextual
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.opc_ctx_item1:
+                Toast.makeText(this, "Has elegido opcion contextual 1", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.opc_ctx_item2:
+                Toast.makeText(this, "Has elegido opcion contextual 2", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.opc_ctx_item3:
+                Toast.makeText(this, "Has elegido opcion contextual 3", Toast.LENGTH_SHORT).show();
+                return true;
+        }
+        return super.onContextItemSelected(item);
+
+    }
+
 }
