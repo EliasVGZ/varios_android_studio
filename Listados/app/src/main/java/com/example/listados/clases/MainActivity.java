@@ -16,6 +16,7 @@ import listviews.ListView_4_Personalizada1;
 import listviews.ListView_5_Personalizada_DiferentesImagenes;
 import listviews.ListView_6_Personalizada2_DiferentesImagenes_TypedArray;
 import listviews.ListView_7_Personalizado3_ArrayList;
+import listviews.ListView_8_Optimizada;
 import spinners.Spinner_1_Activity;
 import spinners.Spinner_2_Activity;
 import spinners.Spinner_3_ActivityDesdeRecurso;
@@ -25,7 +26,7 @@ import spinners.Spinner_5_DinamicoAcitivity;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button btn_spinner, btn2_spinner, btn3_spinner, btn4_spinner, btn5_spinner, btn1_listview, btn2_listview,
-            btn3_listview,btn4_listview, btn5_listview, btn6_listview, btn7_listview;
+            btn3_listview,btn4_listview, btn5_listview, btn6_listview, btn7_listview, btn8_listview;
 
 
     @Override
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn5_listview = findViewById(R.id.btn5_listview);
         btn6_listview = findViewById(R.id.btn6_listview);
         btn7_listview = findViewById(R.id.btn7_listview);
+        btn8_listview = findViewById(R.id.btn8_listview);
 
         btn_spinner.setOnClickListener(this);
         btn2_spinner.setOnClickListener(this);
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn5_listview.setOnClickListener(this);
         btn6_listview.setOnClickListener(this);
         btn7_listview.setOnClickListener(this);
+        btn8_listview.setOnClickListener(this);
 
 
     }
@@ -103,6 +106,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn7_listview:
                 intent.setClass(this, ListView_7_Personalizado3_ArrayList.class);
+                break;
+            case R.id.btn8_listview:
+                intent.setClass(this, ListView_8_Optimizada.class);
                 break;
 
         }//end swtich

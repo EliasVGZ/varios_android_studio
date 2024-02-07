@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Listados"
         tools:targetApi="31">
         <activity
+            android:name="listviews.ListView_8_Optimizada"
+            android:exported="false" />
+        <activity
             android:name="listviews.ListView_7_Personalizado3_ArrayList"
             android:exported="false" />
         <activity
@@ -21,9 +24,7 @@
         <activity
             android:name="listviews.ListView_5_Personalizada_DiferentesImagenes"
             android:exported="false" />
-        <activity
-            android:name="listviews.ListView_5_combox"
-            android:exported="false" />
+
         <activity
             android:name="spinners.Spinner_6_combox"
             android:exported="false" />

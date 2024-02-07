@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LIST VIEW PLANETAS CON ARRAYLIST Y VIEWCONTENT"
+        android:text="LIST VIEW PLANETAS CON ARRAYLIST Y OPTIMIZADO!!!"
         android:layout_margin="15dp"/>
 
     <!-- ELEMENTO listvie PARA OPTIMIZAR -->

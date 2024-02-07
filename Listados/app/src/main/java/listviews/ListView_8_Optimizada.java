@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,6 +25,9 @@ public class ListView_8_Optimizada extends AppCompatActivity {
 
     private ListView lv_planetas8;
     private ArrayList<Planetas> listadoPlanetas;
+    private AdaptadorPersonalizado_4_Optimizado adaptador;
+    private Planetas planeta;
+    private int posicion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,17 +44,14 @@ public class ListView_8_Optimizada extends AppCompatActivity {
         int longitud = getResources().getStringArray(R.array.planetas).length;
 
         for (int i = 0; i < longitud; i++) {
-            listadoPlanetas.add(new Planetas(
-                    getResources().getStringArray(R.array.planetas)[i],
+            listadoPlanetas.add(new Planetas(getResources().getStringArray(R.array.planetas)[i],
                     getResources().obtainTypedArray(R.array.fotos_planetas).getResourceId(i, -1)));
 
         }
         //Crear instancia del adaptador personalizado
-        AdaptadorPersonalizado_4_Optimizado adaptador = new AdaptadorPersonalizado_4_Optimizado(
-                this,
+         adaptador = new AdaptadorPersonalizado_4_Optimizado(this,
                 R.layout.fila_diferentes_imagenes_y_texto,
                 listadoPlanetas
-
         );
         lv_planetas8.setAdapter(adaptador);
 
@@ -67,19 +68,24 @@ public class ListView_8_Optimizada extends AppCompatActivity {
     //Inflar el menu contextual
 
     @Override
-    public void onCreateContextMenu(ContextMenu menu,
-                                    View v, //Recibe la vista pulsada
+    public void onCreateContextMenu(ContextMenu menu, View v, //Recibe la vista pulsada
                                     ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
 
         MenuInflater inflater = getMenuInflater();
 
-        AdapterView.AdapterContextMenuInfo info=(AdapterView.AdapterContextMenuInfo)menuInfo;//Castearlo a un ADAPTER
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;//Castearlo a un ADAPTER
 
         //String elemento=lv_planetas8.getAdapter().getItem(info.position).toString();//Conssigue nombre del planeta
-        int posicion = info.position;
-        Planetas planeta = (Planetas) lv_planetas8.getAdapter().getItem(posicion);
-        menu.setHeaderTitle(planeta.getNombre());//Escribe el titular con el string que contiene el nombre del planeta
+        posicion = info.position;
+
+        //Planetas planeta = (Planetas) lv_planetas8.getAdapter().getItem(posicion);
+
+        //todo, creo que esta es mejor opcion.
+        planeta = (Planetas) adaptador.getItem(posicion);
+
+        //Escribe el titular con el string que contiene el nombre del planeta
+        menu.setHeaderTitle(planeta.getNombre());
 
         inflater.inflate(R.menu.menu_contextual1, menu);
     }
@@ -89,8 +95,14 @@ public class ListView_8_Optimizada extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.opc_ctx_item1:
+                //adaptador.remove(planeta); todo forma 1 de eliminar
+                //eliminarElemento(posicion); //todo forma 2 de eliminar
+                //todo forma 3 de eliminar --> Borrar elemento de la lista --> NOTIFICAR AL ADAPTER
+                listadoPlanetas.remove(posicion);
+                adaptador.notifyDataSetChanged();
+
                 Toast.makeText(this, "Has elegido opcion contextual 1", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.opc_ctx_item2:
@@ -102,6 +114,21 @@ public class ListView_8_Optimizada extends AppCompatActivity {
         }
         return super.onContextItemSelected(item);
 
+    }
+
+    private void eliminarElemento(int position) {
+        ArrayList<Planetas> listaDatos = obtenerListaDeDatos();
+
+        if (position >= 0 && position < listaDatos.size()) {
+            listaDatos.remove(position);
+
+            // Notificar al adaptador que los datos han cambiado
+            adaptador.notifyDataSetChanged();
+        }
+    }
+
+    private ArrayList<Planetas> obtenerListaDeDatos() {
+        return listadoPlanetas;
     }
 
 }
