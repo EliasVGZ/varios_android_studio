@@ -38,8 +38,10 @@ public class Adaptador_Personalizado_Animales_ArrayList extends ArrayAdapter {
     //TODO CREAMOS UN METODO VIEWHOLDER QUE LO USAREMOS COMO CONTENEDOR DE DATOS
     //Todo es un wrapper alrededor de una view ue contiene el diseño de un elemento individual de la lista
     private static class ViewHolder {
-        TextView tvPlanetas;
-        ImageView imgPlanetas;
+        TextView tv_animales;
+        TextView tv_infoAnimales;
+        ImageView img_animales;
+        ImageView img_colores;
     }
 
 
@@ -47,25 +49,32 @@ public class Adaptador_Personalizado_Animales_ArrayList extends ArrayAdapter {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
+        View fila = convertView;
+        ViewHolder holder;
 
-        //Inflamos nuestro layout personalizado (fila_diferentes_imagenes_y_texto.xml)
-        LayoutInflater layoutInflater = context.getLayoutInflater();
-        View fila = layoutInflater.inflate(layoutPersonalizado, null);
+        //Todo Optimizamos el inflado
+        if(fila==null){
+            //Inflamos el layout personalizado (layout_personalizado_animales.xml)
+            LayoutInflater layoutInflater = context.getLayoutInflater();
+            fila = layoutInflater.inflate(layoutPersonalizado, null);
 
-        TextView tv_animales = fila.findViewById(R.id.tv_animales);
-        tv_animales.setText(listaAnimales.get(position).getNombreAnimales());
+            holder = new ViewHolder();
+            holder.tv_animales = fila.findViewById(R.id.tv_animales);
+            holder.tv_infoAnimales = fila.findViewById(R.id.tv_infoAnimales);
+            holder.img_animales = fila.findViewById(R.id.img_animales);
+            holder.img_colores = fila.findViewById(R.id.img_colores);
 
-        TextView tv_infoAnimales = fila.findViewById(R.id.tv_infoAnimales);
-        tv_infoAnimales.setText(listaAnimales.get(position).getInfo());
 
-        ImageView img_animales = fila.findViewById(R.id.img_animales);
-        img_animales.setImageResource(listaAnimales.get(position).getImagen_Animales());
-
-        ImageView img_colores = fila.findViewById(R.id.img_colores);
-        img_colores.setImageResource(listaAnimales.get(position).getColores_Animales());
+            fila.setTag(holder);//Guardamos los atributos dentro del holder
+        }else{
+            holder = (ViewHolder) fila.getTag();
+        }
+        holder.tv_animales.setText(listaAnimales.get(position).getNombreAnimales());
+        holder.tv_infoAnimales.setText(listaAnimales.get(position).getInfo());
+        holder.img_animales.setImageResource(listaAnimales.get(position).getImagen_Animales());
+        holder.img_colores.setImageResource(listaAnimales.get(position).getColores_Animales());
 
         return fila;
-
 
     }
 

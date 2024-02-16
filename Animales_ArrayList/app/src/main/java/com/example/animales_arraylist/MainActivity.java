@@ -2,6 +2,7 @@ package com.example.animales_arraylist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Animales> listaAnimales;
 
+    @SuppressLint("Recycle")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
