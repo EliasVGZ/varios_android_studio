@@ -32,8 +32,6 @@ public class MainActivity extends Auxiliar_Activity implements View.OnClickListe
         iv_imagen = findViewById(R.id.iv_imagen);
         btn_activity2 = findViewById(R.id.btn_activity2);
 
-
-
         //Asociar el menu contextual a las vistas
         registerForContextMenu(tv_etiqueta);
         registerForContextMenu(iv_imagen);
@@ -45,9 +43,7 @@ public class MainActivity extends Auxiliar_Activity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.btn_activity2){
-            Intent intent = new Intent();
-            intent.setClass(MainActivity.this, MainActivity2.class);
-            startActivity(intent);
+
         }
 
     }
@@ -77,6 +73,9 @@ public class MainActivity extends Auxiliar_Activity implements View.OnClickListe
         switch (item.getItemId()){
             case R.id.opc_ctx_item1:
                 Toast.makeText(this, "Has elegido opcion contextual 1", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, MainActivity2.class);
+                startActivity(intent);
                 return true;
             case R.id.opc_ctx_item2:
                 Toast.makeText(this, "Has elegido opcion contextual 2", Toast.LENGTH_SHORT).show();

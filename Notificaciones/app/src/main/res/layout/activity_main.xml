@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <Button
+        android:id="@+id/btn_mensaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dialogo con 1 mensaje">
+
+    </Button>
+    <Button
+        android:id="@+id/btn_1boton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dialogo con 1 boton"/>
+    <Button
+        android:id="@+id/btn_2botones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dialogo con 2 botones"/>
+    <Button
+        android:id="@+id/btn_3botones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dialogo con 3 botones"/>
+
+    <!-- Ventana de diálogo con lista de selección-->
+
+    <Button
+        android:id="@+id/btn_lista_simple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dialogo con lista simple"
+        android:onClick="onClickBtn">
+
+    </Button>
+    <Button
+        android:id="@+id/btn_lista_simple_aceptar_opcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dialogo con lista simple con boton aceptar"
+        android:onClick="onClickBtn">
+
+    </Button>
+
+</LinearLayout>
