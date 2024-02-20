@@ -44,9 +44,16 @@
         android:id="@+id/btn_lista_simple_aceptar_opcion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dialogo con lista simple con boton aceptar"
+        android:text="Dialogo con ELECCION DE UN ITEM en un radiobutton-SingleChoice"
         android:onClick="onClickBtn">
-
     </Button>
+    <Button
+        android:id="@+id/btn_lista_multiple_opciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dialogo con Multiples Elecciones-MultipleChoice"
+        android:onClick="onClickBtn">
+    </Button>
+
 
 </LinearLayout>
