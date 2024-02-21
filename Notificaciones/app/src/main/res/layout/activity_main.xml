@@ -54,6 +54,13 @@
         android:text="Dialogo con Multiples Elecciones-MultipleChoice"
         android:onClick="onClickBtn">
     </Button>
+    <Button
+        android:id="@+id/btn_lanzar_notificaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Boton Lanzar Notificaciones en Barra de estado"
+        android:onClick="onClickBtn">
+    </Button>
 
 
 </LinearLayout>

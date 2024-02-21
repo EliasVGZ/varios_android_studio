@@ -4,29 +4,33 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.Image;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button btn_mensaje, btn_1boton, btn_2botones, btn_3botones;
     private String seleccion;
     // Inicializar el StringBuilder para almacenar selecciones
-    final StringBuilder selecciones = new StringBuilder();
-    private String[] sel;
+    final StringBuilder selecciones = new StringBuilder();//Todo no lo he usado pero me puede zafar
+
+    private static final int NOTIFICACION_1 = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    //Todo onclickBtn desde XML, LO CREA PARA VER SI FUNCIONA!!!!!!!
+    //Todo onclickBtn desde XML, LO CREO PARA VER SI FUNCIONA!!!!!!!
     @SuppressLint("NonConstantResourceId")
     public void onClickBtn(View v) {
         switch (v.getId()) {
@@ -78,8 +82,52 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_lista_multiple_opciones:
                 dialogo_multiple_opciones();
                 break;
+            case R.id.btn_lanzar_notificaciones:
+                notificacion_barra_estado();
+                break;
 
         }
+    }
+
+    /**
+     * Método para crear una notificacion en la barra de estado
+     */
+    private void notificacion_barra_estado() {
+
+        // 1-Crear Notificacion!
+        Notification.Builder notificacion = new Notification.Builder(this);
+        // 2-Personalizar notificacion!
+            //Barra de estado
+        notificacion.setSmallIcon(android.R.drawable.ic_delete); //Setear icono pequeño, aparece en la barra de estado
+            //Bandeja del sistema
+        //Todo Para poner el icono grande en la bandeja del sistema, tenemos que convertir el drawable en bitmap
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.img_planeta);
+        notificacion.setLargeIcon(bitmap);
+
+        notificacion.setContentTitle("Mensaje Nuevo!!"); //Título
+        notificacion.setContentText("Próxima reunión semanal bla bla");//Mensaje
+        notificacion.setAutoCancel(true);//Deja de aparecer el icono en la barra de estado al clickear la notificacion
+
+        // 3-Asociar una acción a la pulsacion del usuario
+        Intent i = new Intent(this, Activity2.class); //Todo, Ejemplo de como llamar a otra ACTIVITY
+        //Todo Creo un ejemplo de como llamar a otra app
+        // Especifica la acción que deseas realizar al hacer clic en la notificación
+        // En este ejemplo, se inicia la actividad principal de la aplicación de destino
+//        intent.setAction(Intent.ACTION_MAIN);
+//        intent.addCategory(Intent.CATEGORY_LAUNCHER);
+//        intent.setClassName("com.example.cambiodemoneda", "com.example.cambiodemoneda.MainActivity");
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i, PendingIntent.FLAG_IMMUTABLE);
+            //Asociar el pendingIntent con la notificación!
+        notificacion.setContentIntent(pendingIntent);
+        //startActivity(i);
+
+        // 4-Lanzar la notificacion
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        //El notification.builder nos ayudo para construir, ahora tenemos que volver a pasarlo a Notification PARA QUE SEA UNA NOTIFICaCION
+        Notification notifi = notificacion.build();//
+        notificationManager.notify( NOTIFICACION_1, notifi);// El NOTIFICATION_1 es una constante que añadí arriba
+
     }
 
     /**
@@ -95,6 +143,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setMultiChoiceItems(R.array.colores, null, new DialogInterface.OnMultiChoiceClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
                         if (isChecked){
                             coloresSeleccionados[which] = true;
                         }else{
@@ -208,7 +257,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //todo Operaciones correspondientes
-                        toastPersonalizada();
+                        toastPersonalizada("Pulsado Ok");
                         dialog.cancel();//Va hacia atrás
                     }
                 })
@@ -231,13 +280,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ventana.show();//Todo, sin el SHOW NO SE VE LA VENTANA EMERGENTE!!!
     }
 
-    private void toastPersonalizada() {
+    private void toastPersonalizada(String pulsadoOk) {
         LinearLayout ll_toast = findViewById(R.id.ll_toast);
 
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.toast_personalizada, null);
         TextView tv_mensaje_toast = view.findViewById(R.id.tv_mensaje_toast);
-        tv_mensaje_toast.setText("Pulsaste OK, ToastPersonalizada");
+        tv_mensaje_toast.setText(pulsadoOk);
 
         Toast toast = new Toast(this);
         toast.setDuration(Toast.LENGTH_SHORT);
