@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -13,6 +14,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -24,6 +26,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private static final String CHANNEL_ID = "IdentificadorCanal";
     private Button btn_mensaje, btn_1boton, btn_2botones, btn_3botones;
     private String seleccion;
     // Inicializar el StringBuilder para almacenar selecciones
@@ -46,7 +49,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_1boton.setOnClickListener(this);
         btn_2botones.setOnClickListener(this);
         btn_3botones.setOnClickListener(this);
+        createNotificationChannel();
 
+    }
+
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is not in the Support Library.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.channel_name);
+            String description = getString(R.string.channel_description);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system. You can't change the importance
+            // or other notification behaviors after this.
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -107,9 +127,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         notificacion.setContentTitle("Mensaje Nuevo!!"); //Título
         notificacion.setContentText("Próxima reunión semanal bla bla");//Mensaje
         notificacion.setAutoCancel(true);//Deja de aparecer el icono en la barra de estado al clickear la notificacion
+        //Incluir texto largo
+        notificacion.setStyle(new Notification.BigTextStyle() //Al poner .setStyle machaca el .setContentText y solo se ve el .setStyle
+                .bigText("Linea de prueba 1 \n" +
+                        "linea de prueba 2\n "+
+                        "linea de prueba 3 \n "+
+                        "linea de prueba 4 \n "+
+                        "linea de prueba 5 \n "+
+                        "linea de prueba 6 \n"
+                        )
+        );
 
         // 3-Asociar una acción a la pulsacion del usuario
         Intent i = new Intent(this, Activity2.class); //Todo, Ejemplo de como llamar a otra ACTIVITY
+
         //Todo Creo un ejemplo de como llamar a otra app
         // Especifica la acción que deseas realizar al hacer clic en la notificación
         // En este ejemplo, se inicia la actividad principal de la aplicación de destino
@@ -129,6 +160,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         notificationManager.notify( NOTIFICACION_1, notifi);// El NOTIFICATION_1 es una constante que añadí arriba
 
     }
+
+    /**TODO Metodo para crear una notificacion a partir de la API 26
+     * public class NotificationHelper {
+     *
+     *     private static final String CHANNEL_ID = "mi_canal_id";
+     *     private static final String CHANNEL_NAME = "Mi Canal";
+     *     private static final String CHANNEL_DESCRIPTION = "Descripción del canal";
+     *
+     *     public static void mostrarNotificacion(Context context, String titulo, String contenido) {
+     *         // Crear el canal de notificación (solo necesario en API 26 y superior)
+     *         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+     *             NotificationChannel canal = new NotificationChannel(
+     *                     CHANNEL_ID,
+     *                     CHANNEL_NAME,
+     *                     NotificationManager.IMPORTANCE_DEFAULT
+     *             );
+     *             canal.setDescription(CHANNEL_DESCRIPTION);
+     *
+     *             NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+     *             notificationManager.createNotificationChannel(canal);
+     *         }
+     *
+     *         // Crear y mostrar la notificación
+     *         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+     *                 .setSmallIcon(R.drawable.ic_notificacion)
+     *                 .setContentTitle(titulo)
+     *                 .setContentText(contenido)
+     *                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+     *
+     *         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+     *         notificationManager.notify(/* ID_DE_NOTIFICACION */
+
 
     /**
      * Método para crear un MultipleChoice -> Elegir varias oppciones por medio de los checkbox!
