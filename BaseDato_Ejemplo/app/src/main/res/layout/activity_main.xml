@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="15dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Operaciones sobre BBDD simple"/>
+
+    <Button
+        android:id="@+id/btn_insertar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="INSERTAR"
+        android:onClick="onClickBtn">
+
+    </Button>
+    <Button
+        android:id="@+id/btn_borrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BORRAR"
+        android:onClick="onClickBtn"/>
+    <Button
+        android:id="@+id/btn_modificar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MODIFICAR"
+        android:onClick="onClickBtn"/>
+    <Button
+        android:id="@+id/btn_mostrar_uno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONSULTAR UNO"
+        android:onClick="onClickBtn"/>
+    <Button
+        android:id="@+id/btn_mostrar_todos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONSULTAR TODOS"
+        android:onClick="onClickBtn"/>
+
+
+
+</LinearLayout>
