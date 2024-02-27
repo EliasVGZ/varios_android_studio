@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/tv_color"
+        android:layout_width="match_parent"
+        android:layout_height="30sp"
+        android:text="CONSULTAR USUARIO"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"/>
+    <EditText
+        android:id="@+id/et_codigo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Código"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/tv_consulta_usuario"
+        android:layout_width="match_parent"
+        android:layout_height="30sp"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"/>
+
+
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONSULTAR"
+        android:onClick="onClickBtn">
+    </Button>
+    <Button
+        android:id="@+id/btn_fin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FIN"
+        android:onClick="onClickBtn">
+    </Button>
+
+
+
+</LinearLayout>

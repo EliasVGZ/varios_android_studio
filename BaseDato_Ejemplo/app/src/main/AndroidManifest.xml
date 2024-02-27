@@ -13,6 +13,18 @@
         android:theme="@style/Theme.BaseDato_Ejemplo"
         tools:targetApi="31">
         <activity
+            android:name=".Activity6_ListarTodos"
+            android:exported="false" />
+        <activity
+            android:name=".Activity5_ListarUsuarios"
+            android:exported="false" />
+        <activity
+            android:name=".Activity4_Modificar"
+            android:exported="false" />
+        <activity
+            android:name=".Activity3_Borrar"
+            android:exported="false" />
+        <activity
             android:name=".Activity2_Insertar"
             android:exported="false" />
         <activity
