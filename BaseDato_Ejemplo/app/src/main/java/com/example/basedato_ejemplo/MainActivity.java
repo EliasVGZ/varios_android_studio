@@ -124,30 +124,87 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
             case R.id.btn_mostrar_uno:
-
+                 // todo Codigo chatgpt
                 // Crear un Intent para pasar de MainActivity a SegundaActivity
                 intent = new Intent(MainActivity.this, Activity5_ListarUsuarios.class);
                 // Iniciar la nueva actividad
                 startActivity(intent);
+
+                //TODO EXPLICACION LULY:
+                /*//------------Codigo SQL directo---------------
+                Cursor cursor = db.rawQuery("SELECT nombre FROM usuarios WHERE codigo = 1", null);
+                if (cursor.moveToFirst()){//Si me devuelve
+                    String nombre = cursor.getString(0);
+                    Toast.makeText(this, "Nombre: "+nombre, Toast.LENGTH_SHORT).show();
+
+                }else{
+                    Toast.makeText(this, "Dato inexistente", Toast.LENGTH_SHORT).show();
+                }
+                cursor.close();//Importante cerrar el cursor
+
+                //--------------Método parametrizado-------------//
+                String[] datosRecuperar = {"nombre"};//Creamos un array de string para datos a recuperar
+                Cursor cursor2 = db.query("usuarios", datosRecuperar, "codigo = 2", null, null, null, null);
+                if(cursor2.moveToFirst()){
+                    String nombre = cursor2.getString(0);
+                    Toast.makeText(this, "Nombre: "+nombre, Toast.LENGTH_SHORT).show();
+
+                }else{
+                    Toast.makeText(this, "Dato inexistente por busqueda parametrizada", Toast.LENGTH_SHORT).show();
+                }
+                cursor2.close();*/
+
                 break;
 
             case R.id.btn_mostrar_todos:
 
-
-                Cursor cursor = db.rawQuery("SELECT codigo, nombre FROM usuarios", null);
-
+                //todo Codigo CHATGPT
+                Cursor cursor3 = db.rawQuery("SELECT codigo, nombre FROM usuarios", null);
                 ArrayList<String> usuarios = new ArrayList<>();
 
-                while (cursor.moveToNext()) {
-                    @SuppressLint("Range") int codigo = cursor.getInt(cursor.getColumnIndex("codigo"));
-                    @SuppressLint("Range") String nombre = cursor.getString(cursor.getColumnIndex("nombre"));
+                while (cursor3.moveToNext()) {
+                    @SuppressLint("Range") int codigo = cursor3.getInt(cursor3.getColumnIndex("codigo"));
+                    @SuppressLint("Range") String nombre = cursor3.getString(cursor3.getColumnIndex("nombre"));
                     usuarios.add("Código: " + codigo + ", Nombre: " + nombre);
                 }
-                cursor.close();
+                cursor3.close();
 
                 intent = new Intent(MainActivity.this, Activity6_ListarTodos.class);
                 intent.putStringArrayListExtra("lista_usuarios", usuarios);
                 startActivity(intent);
+
+                //TODO Codigo Luly:
+                //------------Codigo SQL directo---------------//
+                /*Cursor cursor4 = db.rawQuery("SELECT * FROM usuarios", null);
+                if (cursor4.moveToFirst()){//Si me devuelve algun rsultado
+                    do{
+                        int codigo = cursor4.getInt(0); //Campo codigo recuperado está en la posicion 0
+                        String nombre = cursor4.getString(1);//Campo nombre recuperado está en la posicion 1
+
+                        Toast.makeText(this, "Nombre: "+nombre+ "\n "+"CVodigo: "+codigo, Toast.LENGTH_SHORT).show();
+                    }while(cursor4.moveToNext());
+                }else{
+                    Toast.makeText(this, "Dato inexistente", Toast.LENGTH_SHORT).show();
+                }
+                cursor4.close();//Importante cerrar el cursor*/
+
+
+                //--------------Método parametrizado-------------//
+                /*String[] datosRecuperarParametrizado = {"codigo","nombre"};//Creamos un array de string para datos a recuperar
+                Cursor cursor5 = db.query("usuarios", datosRecuperarParametrizado, null, null, null, null, null);
+                if(cursor5.moveToFirst()){
+                    do{
+                        int codigo = cursor5.getInt(0); //Campo codigo recuperado está en la posicion 0
+                        String nombre = cursor5.getString(1);//Campo nombre recuperado está en la posicion 1
+
+                        Toast.makeText(this, "Nombreeeee: "+nombre+ "\n "+"Codigooooo: "+codigo, Toast.LENGTH_SHORT).show();
+                    }while(cursor5.moveToNext());
+
+                }else{
+                    Toast.makeText(this, "Dato inexistente por busqueda parametrizada", Toast.LENGTH_SHORT).show();
+                }
+                cursor5.close();*/
+
                 break;
 
 

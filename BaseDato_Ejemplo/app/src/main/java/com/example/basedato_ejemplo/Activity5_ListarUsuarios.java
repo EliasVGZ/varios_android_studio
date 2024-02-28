@@ -51,18 +51,20 @@ public class Activity5_ListarUsuarios extends AppCompatActivity {
 
     private void consultarUsuario() {
         String codigoIngresado = et_codigo.getText().toString();
-        int codigo = Integer.parseInt(codigoIngresado);
 
         if(codigoIngresado.isEmpty()){
             Toast.makeText(this, "Debes ingresar un codigo", Toast.LENGTH_SHORT).show();
-        }else{
-            // Realizar la consulta en la base de datos
-            Cursor cursor = db.rawQuery("SELECT nombre FROM usuarios WHERE codigo = ?", new String[]{String.valueOf(codigo)});
+        } else {
+            // Ahora que sabemos que codigoIngresado no está vacío, podemos convertirlo a entero
+            int codigo = Integer.parseInt(codigoIngresado);
+
+            // Realizar la consulta en la base de datos con el código ingresado
+            Cursor cursor = db.rawQuery("SELECT nombre FROM usuarios WHERE codigo = ?", new String[]{codigoIngresado});
 
             if (cursor.moveToFirst()) {
                 // Si hay resultados, obtener el nombre y mostrarlo
                 @SuppressLint("Range") String nombreUsuario = cursor.getString(cursor.getColumnIndex("nombre"));
-                tv_consulta_usuario.setText("Usuario con codigo "+codigoIngresado+" es : "+nombreUsuario);
+                tv_consulta_usuario.setText("Usuario con codigo " + codigoIngresado + " es : " + nombreUsuario);
 
                 Toast.makeText(this, "Nombre del usuario con código " + codigo + ": " + nombreUsuario, Toast.LENGTH_SHORT).show();
             } else {
@@ -72,11 +74,6 @@ public class Activity5_ListarUsuarios extends AppCompatActivity {
 
             cursor.close();
         }
-
-
-
-
-
-
     }
+
 }

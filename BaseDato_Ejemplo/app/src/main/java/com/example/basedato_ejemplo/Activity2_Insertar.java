@@ -53,7 +53,21 @@ public class Activity2_Insertar extends AppCompatActivity {
 
     private void insertarUsuarios() {
         String codigoIngresado = et_codigo.getText().toString();
-        int codigo = Integer.parseInt(codigoIngresado);
+
+        // Verificar si el campo de código está vacío o si el nombre está vacío
+        if (codigoIngresado.isEmpty() || et_nombre.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Por favor, complete todos los campos.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        int codigo;
+        try {
+            codigo = Integer.parseInt(codigoIngresado);
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "El código debe ser numérico.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         String nombreUsuario = et_nombre.getText().toString();
 
         // Verificar si el código ya existe en la base de datos
@@ -61,25 +75,26 @@ public class Activity2_Insertar extends AppCompatActivity {
         if (cursor.getCount() > 0) {
             // El código ya existe, mostrar Toast y no realizar la inserción
             Toast.makeText(this, "El código ya existe. Inserción cancelada.", Toast.LENGTH_SHORT).show();
+            cursor.close(); // Asegurar cerrar el cursor aquí también para evitar leaks
             return;
         }
 
         ContentValues registroNuevo = new ContentValues();
-        registroNuevo.put("codigo", codigo);//insertar codigo
-        registroNuevo.put("nombre", nombreUsuario);//insertar nombre
+        registroNuevo.put("codigo", codigo); // insertar código
+        registroNuevo.put("nombre", nombreUsuario); // insertar nombre
         long l = db.insert("usuarios", null, registroNuevo);
         if (l == -1){
-            Toast.makeText(this, "Insercion erronea", Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(this, "Insercion correctamente", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Inserción errónea", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Inserción correcta", Toast.LENGTH_SHORT).show();
             // Limpiar los EditText después de la inserción
             et_codigo.setText("");
             et_nombre.setText("");
         }
 
         cursor.close();
-
     }
+
 
 
 }
