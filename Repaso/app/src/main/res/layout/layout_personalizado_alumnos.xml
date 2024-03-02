@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <!-- IMAGEN SE CARGA DINAMICAMENTE en ejecución-->
+        <LinearLayout
+            android:id="@+id/ll_l1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/img_alumnos"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- LinearLayout que contiene los dos primeros TextView -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="33dp"
+                    android:textSize="25dp"
+                    android:textColor="@color/black"
+                    android:text=""
+                    android:gravity="center">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/tv_curso"
+                    android:layout_width="match_parent"
+                    android:layout_height="33dp"
+                    android:textSize="15sp"
+                    android:text=""
+                    android:gravity="center">
+                </TextView>
+                <TextView
+                    android:id="@+id/tv_ciclo"
+                    android:layout_width="match_parent"
+                    android:layout_height="33dp"
+                    android:gravity="end"
+                    android:text="">
+
+                </TextView>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
