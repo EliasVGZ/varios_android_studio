@@ -88,7 +88,8 @@ public class MiClaseParaBBDD extends SQLiteOpenHelper {
 
         // Cerrar el cursor y la base de datos
         cursor.close();
-        db.close();
+        //db.close();
+
 
         return listadoAlumnos;
     }

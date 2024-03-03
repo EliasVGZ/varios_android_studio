@@ -34,7 +34,7 @@ import android.widget.Toast;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Auxiliar_Activity {
 
     private LinearLayout ll_ciclo;
     private Spinner sp_curso, sp_ciclo;
@@ -43,12 +43,11 @@ public class MainActivity extends AppCompatActivity {
     private String nombreCurso, nombreCiclo, nombreAlumno;
     private int imagenEso, imagenResto, posicion;
     private EditText et_nombre;
-
-    private SharedPreferences preferencia;
-
     private Adaptador_Personalizado adaptadorAlumnos;
     private SQLiteDatabase db;
     private Alumnos alumnos;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,12 +65,21 @@ public class MainActivity extends AppCompatActivity {
         //INICIALIZAMOS LISTA ALUMNSO Y ADAPTADOR ALUMNOS, AMBOS ARRAY DE STRING
         listaAlumnos = new ArrayList<>();
 
-        //Todo zona layout personalizado
+        //TODO ZONA BASE DATOS
+        //Instanciar objeto de la clase auxiliar.
+        MiClaseParaBBDD miClase = new MiClaseParaBBDD(this, "BDUsuarios", null, 1);
+        //Invocar el método de apertura de mi BBDD: getReadableDataBase() y getWritableDatabase():
+        db = miClase.getWritableDatabase();
+
+        listaAlumnos = (ArrayList<Alumnos>) miClase.getAllAlumnos();
+
+
+        /*//Todo zona layout personalizado
         //Crear instancia del adaptador personalizado
         adaptadorAlumnos = new Adaptador_Personalizado(
                 this, R.layout.layout_personalizado_alumnos, listaAlumnos
         );
-        lv_alumnos.setAdapter(adaptadorAlumnos);
+        lv_alumnos.setAdapter(adaptadorAlumnos);*/
 
 
         //todo zona spinner
@@ -82,12 +90,6 @@ public class MainActivity extends AppCompatActivity {
 
         //TODO ZONA MENU CONTEXTUAL
         registerForContextMenu(lv_alumnos);
-
-        //TODO ZONA BASE DATOS
-        //Instanciar objeto de la clase auxiliar.
-        MiClaseParaBBDD miClase = new MiClaseParaBBDD(this, "BDUsuarios", null, 1);
-        //Invocar el método de apertura de mi BBDD: getReadableDataBase() y getWritableDatabase():
-        db = miClase.getWritableDatabase();
 
 
         //TODO, ESTO PUEDE FUNCIONA COMO UNA MENU CONTEXTUAL
@@ -129,9 +131,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
 
+        setupListView(lv_alumnos, listaAlumnos);
 
 
 
+
+
+    }
+
+    // Método para configurar la ListView con el adaptador personalizado
+    public void setupListView(ListView listView, ArrayList<Alumnos> dataList) {
+        adaptadorAlumnos = new Adaptador_Personalizado(
+                this, R.layout.layout_personalizado_alumnos, dataList
+        );
+        listView.setAdapter(adaptadorAlumnos);
+        adaptadorAlumnos.notifyDataSetChanged();
     }
 
 
@@ -163,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
                 .setTitle("Atención")//Título
-                .setCancelable(false);//No se cierra la venta hasta que le de al boton
+                .setCancelable(true);//No se cierra la venta hasta que le de al boton
 
         ventana.show();//Todo, sin el SHOW NO SE VE LA VENTANA EMERGENTE!!!
     }
@@ -315,111 +329,101 @@ public class MainActivity extends AppCompatActivity {
         }else{
             Toast.makeText(this, "Dato inexistente por busqueda parametrizada", Toast.LENGTH_SHORT).show();
         }
+
+
         cursor5.close();
 
         Intent intent = new Intent(MainActivity.this, Activity2_ListarAlumnos.class);
         intent.putStringArrayListExtra("lista_alumnos", alumnos);
         startActivity(intent);
 
+
+
     }
 
     private void guardarAlumnos() {
-
-
         nombreAlumno = et_nombre.getText().toString();
 
-        // TODO Forma de acceder a las imagenes que tengo en el array, en imagenResto parece que da error pero funciona!
-
+        // Obteniendo las imágenes
         imagenEso = getResources().obtainTypedArray(R.array.imagenes).getResourceId(0, -1);
         imagenResto = getResources().obtainTypedArray(R.array.imagenes).getResourceId(1, -1);
 
+        if (!nombreAlumno.isEmpty()) {
+            Alumnos nuevoAlumno;
 
-        if(!nombreAlumno.isEmpty()){
-            if(nombreCurso.equalsIgnoreCase("eso")){
-                Alumnos nuevoAlumno = new Alumnos(nombreAlumno, nombreCurso, imagenEso);
-                listaAlumnos.add(nuevoAlumno);
-
-            }else if(nombreCurso.equalsIgnoreCase("bach.")){
-                Alumnos nuevoAlumno = new Alumnos(nombreAlumno, nombreCurso, imagenResto);
-                listaAlumnos.add(nuevoAlumno);
-
-            }else{
-                Alumnos nuevoAlumno = new Alumnos(nombreAlumno, nombreCurso, nombreCiclo, imagenResto);
-                listaAlumnos.add(nuevoAlumno);
+            // Crear instancia de Alumnos según el tipo de curso
+            if ("eso".equalsIgnoreCase(nombreCurso)) {
+                nuevoAlumno = new Alumnos(nombreAlumno, nombreCurso, imagenEso);
+            } else if ("bach.".equalsIgnoreCase(nombreCurso)) {
+                nuevoAlumno = new Alumnos(nombreAlumno, nombreCurso, imagenResto);
+            } else {
+                nuevoAlumno = new Alumnos(nombreAlumno, nombreCurso, nombreCiclo, imagenResto);
             }
+
+            // Añadir el nuevo alumno a la lista
+            listaAlumnos.add(nuevoAlumno);
 
             // Notificar al adaptador sobre el cambio en la lista
             adaptadorAlumnos.notifyDataSetChanged();
+
             // Limpiar el EditText después de guardar
             et_nombre.getText().clear();
 
+            // Mostrar un Toast con la información del alumno
+            mostrarToastAlumno(nuevoAlumno);
 
-        } else{
-            Toast.makeText(this, "Nombre alumno no puede estar vacio", Toast.LENGTH_SHORT).show();
+            // Insertar el nuevo alumno en la base de datos
+            insertarUsuarioEnBD();
+
+        } else {
+            Toast.makeText(this, "Nombre de alumno no puede estar vacío", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void mostrarToastAlumno(Alumnos alumno) {
+        // Mostrar un Toast con la información del alumno
+        String mensaje = "Alumno: " + alumno.getNombre() + "\n" +
+                "Curso: " + alumno.getCurso();
+        if (alumno.getCiclo() != null) {
+            mensaje += "\nCiclo: " + alumno.getCiclo();
         }
 
-        //GENERO TOAST
-        lv_alumnos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Alumnos alumnoSeleccionado = listaAlumnos.get(position);
+        Toast.makeText(MainActivity.this, mensaje, Toast.LENGTH_SHORT).show();
+    }
 
-                String mensaje = "Alumno: " + alumnoSeleccionado.getNombre() + "\n" +
-                        "Curso: " + alumnoSeleccionado.getCurso();
-                if (alumnoSeleccionado.getCiclo() != null) {
-                    mensaje += "\nCiclo: " + alumnoSeleccionado.getCiclo();
-                }
+    private void insertarUsuarioEnBD() {
+        try {
+            ContentValues registroNuevo = new ContentValues();
+            registroNuevo.put("nombre", nombreAlumno);
+            registroNuevo.put("curso", nombreCurso);
 
-                Toast.makeText(MainActivity.this, mensaje, Toast.LENGTH_SHORT).show();
+            if ("ESO".equalsIgnoreCase(nombreCurso) || "bach.".equalsIgnoreCase(nombreCurso)) {
+                registroNuevo.putNull("ciclo");
+            } else {
+                registroNuevo.put("ciclo", nombreCiclo);
             }
-        });
 
-        insertarUsuarios();
+            if ("ESO".equalsIgnoreCase(nombreCurso)) {
+                registroNuevo.put("imagenEso", imagenEso);
+            } else {
+                registroNuevo.put("imagenResto", imagenResto);
+            }
 
+            long l = db.insert("alumnos", null, registroNuevo);
 
+            if (l == -1) {
+                Toast.makeText(this, "Inserción errónea", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Inserción correcta", Toast.LENGTH_SHORT).show();
+                et_nombre.setText("");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //cursor.close();
     }
 
-    private void insertarUsuarios() {
-
-
-
-        // Verificar si el código ya existe en la base de datos
-        Cursor cursor = db.rawQuery("SELECT nombre, ciclo, curso, imagenEso, imagenResto FROM alumnos WHERE nombre = ?", null);
-        if (cursor.getCount() > 0) {
-            // El código ya existe, mostrar Toast y no realizar la inserción
-            Toast.makeText(this, "El nombre ya existe. Inserción cancelada.", Toast.LENGTH_SHORT).show();
-            cursor.close(); // Asegurar cerrar el cursor aquí también para evitar leaks
-            return;
-        }
-
-        ContentValues registroNuevo = new ContentValues();
-        registroNuevo.put("nombre", nombreAlumno);
-        registroNuevo.put("curso", nombreCurso);
-        // Establece "ciclo" a null o a una cadena vacía si el curso es "ESO" o "bach."
-        if ("ESO".equalsIgnoreCase(nombreCurso) || "bach.".equalsIgnoreCase(nombreCurso)) {
-            registroNuevo.putNull("ciclo"); // O bien, registroNuevo.put("ciclo", "");
-
-        } else {
-            registroNuevo.put("ciclo", nombreCiclo);
-        }
-        if("ESO".equalsIgnoreCase(nombreCurso)){
-            registroNuevo.put("imagenEso", imagenEso);
-        }else{
-            registroNuevo.put("imagenResto", imagenResto);
-        }
-
-
-        long l = db.insert("alumnos", null, registroNuevo);
-        if (l == -1){
-            Toast.makeText(this, "Inserción errónea", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Inserción correcta", Toast.LENGTH_SHORT).show();
-
-            et_nombre.setText("");
-        }
-
-        cursor.close();
-    }
 
     //TODO CREAR UNA NOTIFICACION QUE PAREZCA UN MENU
 

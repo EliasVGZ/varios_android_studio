@@ -112,13 +112,8 @@
         android:layout_height="match_parent">
 
     </ListView>
-    <ListView
-        android:id="@+id/lv_vista_personalizada"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
 
-    </ListView>
+
 
 
 </LinearLayout>

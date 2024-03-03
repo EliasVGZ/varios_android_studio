@@ -66,11 +66,15 @@ public class Adaptador_Personalizado extends ArrayAdapter {
         }else{
             holder = (ViewHolder) fila.getTag();
         }
-        Alumnos alumnoActual = listaAlumnos.get(position);
+        /*Alumnos alumnoActual = listaAlumnos.get(position);
         holder.tv_nombre.setText(alumnoActual.getNombre());
         holder.tv_curso.setText(alumnoActual.getCurso());
         holder.tv_ciclo.setText(alumnoActual.getCiclo());
-        holder.img_alumnos.setImageResource(alumnoActual.getImagen());
+        holder.img_alumnos.setImageResource(alumnoActual.getImagen());*/
+        holder.tv_nombre.setText(listaAlumnos.get(position).getNombre());
+        holder.tv_curso.setText(listaAlumnos.get(position).getCurso());
+        holder.tv_ciclo.setText(listaAlumnos.get(position).getCiclo());
+        holder.img_alumnos.setImageResource(listaAlumnos.get(position).getImagen());
 
         return fila;
 
