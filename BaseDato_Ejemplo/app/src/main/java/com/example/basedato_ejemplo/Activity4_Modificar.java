@@ -59,7 +59,6 @@ public class Activity4_Modificar extends AppCompatActivity {
 
         registroModificar.put("nombre", nombreUsuario);//insertar codigo
 
-
         int j = db.update("usuarios", registroModificar, "codigo = "+codigo, null);
         if (j == 0){
             Toast.makeText(this, "Modificacion parametrizada con errores", Toast.LENGTH_SHORT).show();
@@ -68,8 +67,6 @@ public class Activity4_Modificar extends AppCompatActivity {
             et_codigo.setText("");
             et_nombre.setText("");
                 }
-
-
 
 
     }

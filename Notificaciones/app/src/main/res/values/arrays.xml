@@ -6,4 +6,12 @@
         <item name="azul">Azul</item>
         <item name="negro">Negro</item>
     </string-array>
+
+    <array name="color">
+        <item>@color/red</item>
+        <item>@color/green</item>
+        <item>@color/blue</item>
+        <item>@color/black</item>
+
+    </array>
 </resources>

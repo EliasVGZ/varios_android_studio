@@ -31,7 +31,7 @@ public class ListView_6_Personalizada2_DiferentesImagenes_TypedArray extends App
                 this,
                 R.layout.fila_diferentes_imagenes_y_texto,
                 getResources().getStringArray(R.array.planetas),//TEXTO
-                arrayIdFotoPlanetas //OJO, Aqui es obtainTypedArray + array de imagenes
+                arrayIdFotoPlanetas
         );
 
         lv_planetas6.setAdapter(adaptador);

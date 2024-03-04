@@ -31,7 +31,7 @@ public class ListView_7_Personalizado3_ArrayList extends AppCompatActivity {
         listadoPlanetas = new ArrayList<>();
 
 
-        //int longitud = Math.min(nombres.length, imagenes.length()); TODO VERIFICA QUE AMBOS ARRAYS SEAN IGUALES
+
         int longitud = getResources().getStringArray(R.array.planetas).length;
 
         for (int i = 0; i < longitud; i++) {

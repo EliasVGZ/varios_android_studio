@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -68,6 +69,8 @@ public class Activity3_DatosDesdeBBDD extends AppCompatActivity {
                 this, R.layout.layout_personalizado_alumnos, dataList
         );
         listView.setAdapter(adaptador);
+
+
     }
 
     @Override
@@ -102,7 +105,13 @@ public class Activity3_DatosDesdeBBDD extends AppCompatActivity {
             case R.id.opc_eliminar:
                 dialogo_ventana_2botones(info.position);
 
+            case R.id.opc_modificar:
+                Toast.makeText(this, "Seleccion MODIFICAR!", Toast.LENGTH_SHORT).show();
+
                 return true;
+
+
+
         }
         return super.onContextItemSelected(item);
 

@@ -2,6 +2,7 @@ package com.example.notificaciones;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -11,11 +12,15 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     final StringBuilder selecciones = new StringBuilder();//Todo no lo he usado pero me puede zafar
 
     private static final int NOTIFICACION_1 = 1;
+    private LinearLayout ll_principal;
+    private SharedPreferences preferencia;
 
 
     @Override
@@ -44,12 +51,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_1boton = findViewById(R.id.btn_1boton);
         btn_2botones = findViewById(R.id.btn_2botones);
         btn_3botones = findViewById(R.id.btn_3botones);
+        ll_principal = findViewById(R.id.ll_principal);
 
         btn_mensaje.setOnClickListener(this);
         btn_1boton.setOnClickListener(this);
         btn_2botones.setOnClickListener(this);
         btn_3botones.setOnClickListener(this);
         createNotificationChannel();
+
+        //TODO PARA QUE SE GUARDE EL COLOR DE FONDO QUE HE ELEGIDO
+        preferencia = PreferenceManager.getDefaultSharedPreferences(this);
+        cargarColorGuardado();
+
 
     }
 
@@ -198,12 +211,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private void dialogo_multiple_opciones() {
 
-        boolean[] coloresSeleccionados = {false, false, false, false};
+        boolean[] coloresSeleccionados = {true, false, false, false};
+
 
         AlertDialog.Builder ventana = new AlertDialog.Builder(this);
         ventana.setIcon(R.drawable.ic_launcher_background)
                 .setTitle("Elige colores: DIALOGO MULTIPLE OPCIONES")
-                .setMultiChoiceItems(R.array.colores, null, new DialogInterface.OnMultiChoiceClickListener() {
+                .setMultiChoiceItems(R.array.colores, coloresSeleccionados, new DialogInterface.OnMultiChoiceClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which, boolean isChecked) {
 
@@ -241,7 +255,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         seleccion = getResources().getStringArray(R.array.colores)[which];
-                        //Toast.makeText(MainActivity.this, "Has seleccionado: " + seleccion, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Has seleccionado: " + seleccion, Toast.LENGTH_SHORT).show();
                     }
                 });
         ventana.setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
@@ -255,7 +269,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                } else {
 //                    Toast.makeText(MainActivity.this, "No se puede abrir el navegador web", Toast.LENGTH_SHORT).show();
 //                }
-                abrirWikipediaPorColor(seleccion);
+                //abrirWikipediaPorColor(seleccion);
             }
         });
 
@@ -270,14 +284,56 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setItems(R.array.colores, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String seleccion = getResources().getStringArray(R.array.colores)[which];//Todo, capturamos la seleccion del usuario
-                        Toast.makeText(MainActivity.this, "Has seleccionado: "+seleccion, Toast.LENGTH_SHORT).show();
+
+                        //todo NECESARIO PARA GUARDA EL FONDO QUE SE HA ELEGIDO
+                        seleccion = getResources().getStringArray(R.array.colores)[which];
+                        elegirColor(seleccion);
+
+                        //Todo, Realizo preferencedshared
+                        SharedPreferences.Editor editorPreferencia = preferencia.edit();
+                        editorPreferencia.putString("color", seleccion);
+                        editorPreferencia.apply();
+
+                        Toast.makeText(MainActivity.this, "Has seleccionado: " + seleccion, Toast.LENGTH_SHORT).show();
                     }
                 });
 
 
         ventana.show();
     }
+
+    // Método para guardar el color en SharedPreferences
+    private void cargarColorGuardado() { //TODO AQUI HACEMOS EL GETSTRING PARA RECUPERAR EL COLOR!
+
+        String colorGuardado = preferencia.getString("color", "negro");
+        elegirColor(colorGuardado);
+    }
+
+
+    private void elegirColor(String color) {
+        int colorRes;
+        switch (color.toLowerCase()) {
+            case "rojo":
+                colorRes = R.color.red;
+                break;
+            case "verde":
+                colorRes = R.color.green;
+                break;
+            case "azul":
+                colorRes = R.color.blue;
+                break;
+            case "negro":
+                colorRes = R.color.black;
+                break;
+            default:
+                Toast.makeText(this, "No coincide con ningún color", Toast.LENGTH_SHORT).show();
+                return;
+        }
+        int colorFinal = ContextCompat.getColor(MainActivity.this, colorRes);
+        ll_principal.setBackgroundColor(colorFinal);
+    }
+
+
 
 
     private void dialogo_ventana_3botones() {
@@ -288,6 +344,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //todo Operaciones correspondientes
+                        notificacion_barra_estado();
                         Toast.makeText(MainActivity.this, "Pulsado Ok", Toast.LENGTH_SHORT).show();
                         dialog.cancel();//Va hacia atrás
                     }

@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="15dp">
+    android:padding="15dp"
+    android:id="@+id/ll_principal">
 
     <Button
         android:id="@+id/btn_mensaje"

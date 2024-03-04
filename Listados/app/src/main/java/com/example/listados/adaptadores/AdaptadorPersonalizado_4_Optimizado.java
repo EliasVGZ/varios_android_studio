@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,12 +25,12 @@ public class AdaptadorPersonalizado_4_Optimizado extends ArrayAdapter {
     private final ArrayList<Planetas> listadoPlanetas;
     private final int layout_personalizado;
 
-    private final int[] coloresFila; // Array de colores para las filas
+
 
     public AdaptadorPersonalizado_4_Optimizado(
             @NonNull Activity context,// --> SE USA MAS ABAJOO EN getView
             int layout_personalizado, // --> SE USA MAS ABAJOO EN getView
-            ArrayList<Planetas> listadoPlanetas, int[] coloresFila)  // --> SE USA MAS ABAJOO EN getView
+            ArrayList<Planetas> listadoPlanetas)  // --> SE USA MAS ABAJOO EN getView
     {
         //Constructor defectivo de la clase arrayadapter
         super(context, layout_personalizado, listadoPlanetas);
@@ -37,7 +38,6 @@ public class AdaptadorPersonalizado_4_Optimizado extends ArrayAdapter {
         this.context = context;
         this.layout_personalizado = layout_personalizado;
         this.listadoPlanetas = listadoPlanetas;
-        this.coloresFila = coloresFila;
     }
 
 
@@ -46,6 +46,7 @@ public class AdaptadorPersonalizado_4_Optimizado extends ArrayAdapter {
     private static class ViewHolder {
         TextView tvPlanetas;
         ImageView imgPlanetas;
+        LinearLayout ll_cambiarFondo;
     }
 
     @SuppressLint("ResourceType")
@@ -65,6 +66,7 @@ public class AdaptadorPersonalizado_4_Optimizado extends ArrayAdapter {
             holder = new ViewHolder();
             holder.tvPlanetas = fila.findViewById(R.id.tv_planeta);
             holder.imgPlanetas = fila.findViewById(R.id.img_planetas);
+            holder.ll_cambiarFondo = fila.findViewById(R.id.ll_cambiarFondo);
 
             fila.setTag(holder);//Guardamos los atributos dentro del holder
 
@@ -76,6 +78,16 @@ public class AdaptadorPersonalizado_4_Optimizado extends ArrayAdapter {
 
         holder.tvPlanetas.setText(listadoPlanetas.get(position).getNombre());
         holder.imgPlanetas.setImageResource(listadoPlanetas.get(position).getImagen());
+
+        //todo PARA CAMBIAR EL COLOR DE CADA LISTVIEW
+        // Obtén el array de colores desde los recursos
+        int[] coloresArray = context.getResources().getIntArray(R.array.colores);
+
+        // Obtén el índice correspondiente al elemento en la lista
+        int colorIndex = position % coloresArray.length;
+
+        // Establece el color de fondo del LinearLayout
+        holder.ll_cambiarFondo.setBackgroundColor(coloresArray[colorIndex]);
 
 
 

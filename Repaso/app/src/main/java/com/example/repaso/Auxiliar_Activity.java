@@ -26,7 +26,7 @@ public class Auxiliar_Activity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_opciones, menu);
+        inflater.inflate(R.menu.menu_alumnos, menu);
 
 
         return super.onCreateOptionsMenu(menu);
@@ -40,21 +40,15 @@ public class Auxiliar_Activity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()){
-            case R.id.opc_item1:
-                Toast.makeText(this, "Has elegido OPCION 1", Toast.LENGTH_SHORT).show();
+            case R.id.opc_eliminar:
+                Toast.makeText(this, "Has elegido ELIMINAR", Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.sub_item1:
-                Toast.makeText(this, "Has elegido SUB Opcion 1", Toast.LENGTH_SHORT).show();
+            case R.id.opc_modificar:
+                Toast.makeText(this, "Has elegido Modificar", Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.sub_item2:
-                Toast.makeText(this, "Has elegido SUB Opcion 2", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.opc_item2:
-                Toast.makeText(this, "Has elegido OPCION 2", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.opc_item3:
-                Toast.makeText(this, "Has elegido OPCION 3", Toast.LENGTH_SHORT).show();
-                return true;
+            case R.id.opc_notificacion:
+                Toast.makeText(this, "Has elegido notificacion", Toast.LENGTH_SHORT).show();
+
 
         }
 

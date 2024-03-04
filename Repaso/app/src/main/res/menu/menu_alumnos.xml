@@ -3,5 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/opc_eliminar" android:title="Eliminar" app:showAsAction="always"/>
     <item android:id="@+id/opc_modificar" android:title="Modificar" app:showAsAction="always"/>
+    <item android:id="@+id/opc_notificacion" android:title="Notificacion" app:showAsAction="always"/>
 
 </menu>

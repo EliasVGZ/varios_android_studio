@@ -9,8 +9,7 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ll_cambiar_color">
+        android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/img_planetas"
             android:layout_width="20dp"
@@ -19,25 +18,27 @@
             />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/ll_cambiarFondo">
+
         <TextView
             android:id="@+id/tv_planeta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
+
         <TextView
             android:id="@+id/tv_infoPlaneta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
 
     </LinearLayout>
-
-
 
 
 </LinearLayout>

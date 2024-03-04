@@ -53,25 +53,11 @@ public class ListView_8_Optimizada extends AppCompatActivity {
         // Array de colores para las filas
 //        int[] coloresFila = {Color.parseColor("#FFCDD2"), Color.parseColor("#F8BBD0"), Color.parseColor("#E1BEE7")};
 
-        // Obtén el TypedArray de colores
-        TypedArray coloresRes = getResources().obtainTypedArray(R.array.colores);
 
-// Crea un array de ints para almacenar los colores
-        int[] coloresArray = new int[coloresRes.length()];
 
-// Llena el array con los colores obtenidos del TypedArray
-        for (int i = 0; i < coloresRes.length(); i++) {
-            coloresArray[i] = coloresRes.getColor(i, Color.BLACK); // Color por defecto en caso de error
-        }
-
-// Libera los recursos
-        coloresRes.recycle();
-
-// Crea la instancia del adaptador pasando el array de colores
         adaptador = new AdaptadorPersonalizado_4_Optimizado(this,
                 R.layout.fila_diferentes_imagenes_y_texto,
-                listadoPlanetas,
-                coloresArray
+                listadoPlanetas
         );
         lv_planetas8.setAdapter(adaptador);
 

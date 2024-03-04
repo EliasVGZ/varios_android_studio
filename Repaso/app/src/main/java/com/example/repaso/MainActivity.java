@@ -5,6 +5,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,6 +15,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
@@ -46,6 +51,7 @@ public class MainActivity extends Auxiliar_Activity {
     private Adaptador_Personalizado adaptadorAlumnos;
     private SQLiteDatabase db;
     private Alumnos alumnos;
+    private static final int NOTIFICACION_1 = 1;
 
 
 
@@ -71,15 +77,15 @@ public class MainActivity extends Auxiliar_Activity {
         //Invocar el método de apertura de mi BBDD: getReadableDataBase() y getWritableDatabase():
         db = miClase.getWritableDatabase();
 
-        listaAlumnos = (ArrayList<Alumnos>) miClase.getAllAlumnos();
+        //listaAlumnos = (ArrayList<Alumnos>) miClase.getAllAlumnos();
 
 
-        /*//Todo zona layout personalizado
+        //Todo zona layout personalizado
         //Crear instancia del adaptador personalizado
         adaptadorAlumnos = new Adaptador_Personalizado(
                 this, R.layout.layout_personalizado_alumnos, listaAlumnos
         );
-        lv_alumnos.setAdapter(adaptadorAlumnos);*/
+        lv_alumnos.setAdapter(adaptadorAlumnos);
 
 
         //todo zona spinner
@@ -132,10 +138,6 @@ public class MainActivity extends Auxiliar_Activity {
         });*/
 
         setupListView(lv_alumnos, listaAlumnos);
-
-
-
-
 
     }
 
@@ -217,6 +219,12 @@ public class MainActivity extends Auxiliar_Activity {
             case R.id.opc_eliminar:
                 dialogo_ventana_2botones(info.position);
 
+            case R.id.opc_modificar:
+                Toast.makeText(this, "Seleccion MODIFICAR!", Toast.LENGTH_SHORT).show();
+
+                return true;
+            case R.id.opc_notificacion:
+                notificacion_barra_estado(info.position);
                 return true;
 
 
@@ -230,6 +238,7 @@ public class MainActivity extends Auxiliar_Activity {
         if (position >= 0 && position < listaAlumnos.size()) {
 
             Alumnos alumnoEliminar = listaAlumnos.get(position);
+
             listaAlumnos.remove(alumnoEliminar);
             adaptadorAlumnos.notifyDataSetChanged();
         }
@@ -425,7 +434,74 @@ public class MainActivity extends Auxiliar_Activity {
     }
 
 
-    //TODO CREAR UNA NOTIFICACION QUE PAREZCA UN MENU
+    private void notificacion_barra_estado(int position) {
+
+        String cursoA="";
+        String nombreA = "";
+        String cicloA="";
+        Alumnos infoAlumno = null;
+
+        // 1-Crear Notificacion!
+        Notification.Builder notificacion = new Notification.Builder(this);
+        // 2-Personalizar notificacion!
+        //Barra de estado
+        notificacion.setSmallIcon(android.R.drawable.ic_delete); //Setear icono pequeño, aparece en la barra de estado
+        //Bandeja del sistema
+        //Todo Para poner el icono grande en la bandeja del sistema, tenemos que convertir el drawable en bitmap
+        if (position >= 0 && position < listaAlumnos.size()) {
+
+            infoAlumno = listaAlumnos.get(position);
+            nombreA = infoAlumno.getNombre();
+            cursoA = infoAlumno.getCurso();
+            cicloA = infoAlumno.getCiclo();
+
+            if(cursoA.equalsIgnoreCase("eso")){
+                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icono_eso);
+                notificacion.setLargeIcon(bitmap);
+            }else{
+                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icono_resto);
+                notificacion.setLargeIcon(bitmap);
+            }
+        }
+
+        notificacion.setContentTitle("Mensaje Nuevo!!"); //Título
+        notificacion.setContentText("Datos del alumno");//Mensaje
+        notificacion.setAutoCancel(true);//Deja de aparecer el icono en la barra de estado al clickear la notificacion
+        String mensaje = "Alumno: " + nombreA + "\n" +
+                "Curso: " + cursoA;
+        if (infoAlumno.getCiclo() != null) {
+            mensaje += "\nCiclo: " + cicloA;
+        }
+        //Incluir texto largo
+        notificacion.setStyle(new Notification.BigTextStyle() //Al poner .setStyle machaca el .setContentText y solo se ve el .setStyle
+                .bigText(mensaje)
+        );
+
+
+
+        //Todo Creo un ejemplo de como llamar a otra app
+        // Especifica la acción que deseas realizar al hacer clic en la notificación
+        // En este ejemplo, se inicia la actividad principal de la aplicación de destino
+//        intent.setAction(Intent.ACTION_MAIN);
+//        intent.addCategory(Intent.CATEGORY_LAUNCHER);
+//        intent.setClassName("com.example.cambiodemoneda", "com.example.cambiodemoneda.MainActivity");
+
+        // 3-Asociar una acción a la pulsacion del usuario
+        Intent i = new Intent(this, Activity3_DatosDesdeBBDD.class); //Todo, Ejemplo de como llamar a otra ACTIVITY
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i, PendingIntent.FLAG_IMMUTABLE);
+        //Asociar el pendingIntent con la notificación!
+        notificacion.setContentIntent(pendingIntent);
+
+
+        // 4-Lanzar la notificacion
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        //El notification.builder nos ayudo para construir, ahora tenemos que volver a pasarlo a Notification PARA QUE SEA UNA NOTIFICaCION
+        Notification notifi = notificacion.build();//
+        notificationManager.notify( NOTIFICACION_1, notifi);// El NOTIFICATION_1 es una constante que añadí arriba
+
+    }
+
 
 
 
