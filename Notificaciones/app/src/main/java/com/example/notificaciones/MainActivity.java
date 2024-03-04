@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         AlertDialog.Builder ventana = new AlertDialog.Builder(this);
         ventana.setIcon(R.drawable.ic_launcher_background)
-                .setTitle("Elige colores")
+                .setTitle("Elige colores: DIALOGO MULTIPLE OPCIONES")
                 .setMultiChoiceItems(R.array.colores, null, new DialogInterface.OnMultiChoiceClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which, boolean isChecked) {
@@ -236,7 +236,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void dialogo_single_opcion() {
         AlertDialog.Builder ventana = new AlertDialog.Builder(this);
         ventana.setIcon(R.drawable.img_planeta)
-                .setTitle("Elige color")
+                .setTitle("Elige color DIALOGO SINGLE OPCION")
                 .setSingleChoiceItems(R.array.colores, 1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -266,7 +266,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void dialogo_lista_simple() {
         AlertDialog.Builder ventana = new AlertDialog.Builder(this);
         ventana.setIcon(R.drawable.img_planeta)
-                .setTitle("Elige color")
+                .setTitle("Elige color DIALOGO LISTA SIMPLE")
                 .setItems(R.array.colores, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -283,7 +283,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void dialogo_ventana_3botones() {
         AlertDialog.Builder ventana = new AlertDialog.Builder(this);
         ventana.setIcon(R.drawable.img_planeta)
-                .setMessage("Es una vennttana emergente con 1 boton")
+                .setMessage("Es una vennttana emergente con 3 boton")
                 .setPositiveButton(R.string.boton_ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -315,7 +315,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void dialogo_ventana_2botones() {
         AlertDialog.Builder ventana = new AlertDialog.Builder(this);
         ventana.setIcon(R.drawable.img_planeta)
-                .setMessage("Es una vennttana emergente con 1 boton")
+                .setMessage("Es una vennttana emergente con 2 boton")
                 .setPositiveButton(R.string.boton_ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

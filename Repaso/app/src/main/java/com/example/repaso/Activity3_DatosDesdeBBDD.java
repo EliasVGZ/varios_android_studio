@@ -103,8 +103,6 @@ public class Activity3_DatosDesdeBBDD extends AppCompatActivity {
                 dialogo_ventana_2botones(info.position);
 
                 return true;
-
-
         }
         return super.onContextItemSelected(item);
 

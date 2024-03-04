@@ -22,16 +22,16 @@ public class ListView_6_Personalizada2_DiferentesImagenes_TypedArray extends App
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view6_personalizada2_diferentes_imagenes_typed_array);
-
+        
         lv_planetas6 = findViewById(R.id.lv_planetas6);
+        arrayIdFotoPlanetas = getResources().obtainTypedArray(R.array.fotos_planetas);
 
         //Crear instancia del adaptador personalizado
         AdaptadorPersonalizado_2_TypedArray adaptador = new AdaptadorPersonalizado_2_TypedArray(
                 this,
                 R.layout.fila_diferentes_imagenes_y_texto,
                 getResources().getStringArray(R.array.planetas),//TEXTO
-                getResources().obtainTypedArray(R.array.fotos_planetas)//OJO, Aqui es obtainTypedArray + array de imagenes
-
+                arrayIdFotoPlanetas //OJO, Aqui es obtainTypedArray + array de imagenes
         );
 
         lv_planetas6.setAdapter(adaptador);
@@ -40,7 +40,7 @@ public class ListView_6_Personalizada2_DiferentesImagenes_TypedArray extends App
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String planetaSeleccionado = adapterView.getItemAtPosition(i).toString();//DEBEMOS PONER LA i EN POSITION
-                Toast.makeText(ListView_6_Personalizada2_DiferentesImagenes_TypedArray.this, "Planeta: "+planetaSeleccionado, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ListView_6_Personalizada2_DiferentesImagenes_TypedArray.this, "", Toast.LENGTH_SHORT).show();
             }
         });
     }

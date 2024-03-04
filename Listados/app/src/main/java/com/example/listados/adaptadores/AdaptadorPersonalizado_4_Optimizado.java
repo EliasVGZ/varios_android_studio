@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 import com.example.listados.R;
 import com.example.listados.clases.Planetas;
@@ -23,10 +24,12 @@ public class AdaptadorPersonalizado_4_Optimizado extends ArrayAdapter {
     private final ArrayList<Planetas> listadoPlanetas;
     private final int layout_personalizado;
 
+    private final int[] coloresFila; // Array de colores para las filas
+
     public AdaptadorPersonalizado_4_Optimizado(
             @NonNull Activity context,// --> SE USA MAS ABAJOO EN getView
             int layout_personalizado, // --> SE USA MAS ABAJOO EN getView
-            ArrayList<Planetas> listadoPlanetas)  // --> SE USA MAS ABAJOO EN getView
+            ArrayList<Planetas> listadoPlanetas, int[] coloresFila)  // --> SE USA MAS ABAJOO EN getView
     {
         //Constructor defectivo de la clase arrayadapter
         super(context, layout_personalizado, listadoPlanetas);
@@ -34,6 +37,7 @@ public class AdaptadorPersonalizado_4_Optimizado extends ArrayAdapter {
         this.context = context;
         this.layout_personalizado = layout_personalizado;
         this.listadoPlanetas = listadoPlanetas;
+        this.coloresFila = coloresFila;
     }
 
 
@@ -68,6 +72,8 @@ public class AdaptadorPersonalizado_4_Optimizado extends ArrayAdapter {
         }else{
             holder = (ViewHolder) fila.getTag();//Llamamos al metodo getTag para recuperar datos.
         }
+
+
         holder.tvPlanetas.setText(listadoPlanetas.get(position).getNombre());
         holder.imgPlanetas.setImageResource(listadoPlanetas.get(position).getImagen());
 

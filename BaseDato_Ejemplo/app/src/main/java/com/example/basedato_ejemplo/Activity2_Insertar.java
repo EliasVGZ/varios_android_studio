@@ -53,9 +53,10 @@ public class Activity2_Insertar extends AppCompatActivity {
 
     private void insertarUsuarios() {
         String codigoIngresado = et_codigo.getText().toString();
+        String nombre = et_nombre.getText().toString();
 
         // Verificar si el campo de código está vacío o si el nombre está vacío
-        if (codigoIngresado.isEmpty() || et_nombre.getText().toString().isEmpty()) {
+        if (codigoIngresado.isEmpty() || nombre.isEmpty()) {
             Toast.makeText(this, "Por favor, complete todos los campos.", Toast.LENGTH_SHORT).show();
             return;
         }

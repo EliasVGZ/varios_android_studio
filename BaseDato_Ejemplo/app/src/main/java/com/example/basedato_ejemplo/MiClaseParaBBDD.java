@@ -31,8 +31,6 @@ public class MiClaseParaBBDD extends SQLiteOpenHelper {
         }catch (SQLException e){
             Toast.makeText(contextoBBDD, "Error d inserción", Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
     @Override

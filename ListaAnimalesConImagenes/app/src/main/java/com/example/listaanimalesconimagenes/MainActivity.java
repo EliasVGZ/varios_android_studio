@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import java.util.Arrays;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Auxiliar_Activity {
 
     private ListView lv_animales;
     private String animales;

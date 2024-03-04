@@ -4,8 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,7 +16,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.listados.R;
-import com.example.listados.adaptadores.AdaptadorPersonalizado_3_ArrayList;
 import com.example.listados.adaptadores.AdaptadorPersonalizado_4_Optimizado;
 import com.example.listados.clases.Planetas;
 
@@ -48,10 +48,30 @@ public class ListView_8_Optimizada extends AppCompatActivity {
                     getResources().obtainTypedArray(R.array.fotos_planetas).getResourceId(i, -1)));
 
         }
-        //Crear instancia del adaptador personalizado
-         adaptador = new AdaptadorPersonalizado_4_Optimizado(this,
+
+
+        // Array de colores para las filas
+//        int[] coloresFila = {Color.parseColor("#FFCDD2"), Color.parseColor("#F8BBD0"), Color.parseColor("#E1BEE7")};
+
+        // Obtén el TypedArray de colores
+        TypedArray coloresRes = getResources().obtainTypedArray(R.array.colores);
+
+// Crea un array de ints para almacenar los colores
+        int[] coloresArray = new int[coloresRes.length()];
+
+// Llena el array con los colores obtenidos del TypedArray
+        for (int i = 0; i < coloresRes.length(); i++) {
+            coloresArray[i] = coloresRes.getColor(i, Color.BLACK); // Color por defecto en caso de error
+        }
+
+// Libera los recursos
+        coloresRes.recycle();
+
+// Crea la instancia del adaptador pasando el array de colores
+        adaptador = new AdaptadorPersonalizado_4_Optimizado(this,
                 R.layout.fila_diferentes_imagenes_y_texto,
-                listadoPlanetas
+                listadoPlanetas,
+                coloresArray
         );
         lv_planetas8.setAdapter(adaptador);
 

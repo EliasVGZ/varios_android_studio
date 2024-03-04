@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
             case R.id.btn_mostrar_uno:
-                 // todo Codigo chatgpt
+                 // todo Codigo
                 // Crear un Intent para pasar de MainActivity a SegundaActivity
                 intent = new Intent(MainActivity.this, Activity5_ListarUsuarios.class);
                 // Iniciar la nueva actividad
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.btn_mostrar_todos:
 
-                //todo Codigo CHATGPT
+                //todo Codigo
                 Cursor cursor3 = db.rawQuery("SELECT codigo, nombre FROM usuarios", null);
                 ArrayList<String> usuarios = new ArrayList<>();
 

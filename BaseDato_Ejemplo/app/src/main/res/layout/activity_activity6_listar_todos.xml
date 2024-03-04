@@ -6,12 +6,9 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="15dp"
-    android:id="@+id/listView">
-
-
-
-
-
+    android:id="@+id/listView"
+    android:divider="@color/black"
+    android:dividerHeight="1dp">
 
 
 </ListView>
