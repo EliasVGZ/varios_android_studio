@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/padding"
+    android:background="@color/azulMedio">
+    <LinearLayout
+        android:id="@+id/ll_principal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/azulClaro"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:onClick="onBtnClick">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/learn_chemistry"
+            android:layout_margin="15dp"
+            android:textSize="@dimen/letraTitular" />
+        <ImageButton
+            android:id="@+id/ib_imagenGrande"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/flaskgrande"
+            android:onClick="onBtnClick">
+        </ImageButton>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_quimico"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/padding"
+        android:background="@color/azulClaro"
+        android:visibility="gone"
+        android:gravity="center"
+        android:layout_marginBottom="40sp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/learn_chemistry"
+            android:layout_margin="15dp"
+            android:textSize="@dimen/letraTitular" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ELIGE COMPUESTO"
+            android:layout_marginBottom="40sp">
+
+        </TextView>
+        <ListView
+            android:id="@+id/lv_quimicos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </ListView>
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+</LinearLayout>
