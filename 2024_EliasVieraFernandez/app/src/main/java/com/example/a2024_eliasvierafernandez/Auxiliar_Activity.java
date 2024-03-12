@@ -21,6 +21,7 @@ import androidx.core.app.ActivityCompat;
 public class Auxiliar_Activity extends AppCompatActivity {
 
     private static final int LLAMADA_TELEFONO_DIRECTO = 2;
+    private static final int LLAMADA_OTRA_ACTIVITY = 1;
 
 
     //todo en auxiliar se puede cargar el onCreate
@@ -53,13 +54,14 @@ public class Auxiliar_Activity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.opc_insertar:
                 Intent intent = new Intent(Auxiliar_Activity.this, Activity3.class);
+                startActivityForResult(intent, LLAMADA_OTRA_ACTIVITY);
                 startActivity(intent);
+
+
                 return true;
             case R.id.opc_contacto:
                 dialogo_ventana_2botones();
                 return true;
-
-
 
         }
 

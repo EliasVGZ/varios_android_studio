@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -68,12 +69,15 @@ public class Activity3 extends AppCompatActivity implements View.OnClickListener
             listaQuimicos.add(nuevo);
             adaptador.notifyDataSetChanged();
 
-
-
             insertarQuimicosEnBD();
 
+            // Envía datos de vuelta a la actividad principal
+            Intent intent = new Intent();
+            intent.putExtra("resultado", "Datos que quieres enviar de vuelta");
+            setResult(RESULT_OK, intent);
 
-
+            // Finaliza la actividad
+            finish();
 
         } else {
             Toast.makeText(this, "NO PUEDE ESTAR VACIO", Toast.LENGTH_SHORT).show();
@@ -104,6 +108,13 @@ public class Activity3 extends AppCompatActivity implements View.OnClickListener
 
         //cursor.close();
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        guardarQuimico();
+        finish();
+    }
+
 
 
     @Override
@@ -111,13 +122,20 @@ public class Activity3 extends AppCompatActivity implements View.OnClickListener
         switch (v.getId()) {
             case R.id.btn_insertar:
                 guardarQuimico();
+                Intent intent = new Intent();
+                intent.putExtra("resultado", "Datos que quieres enviar de vuelta");
+                setResult(RESULT_OK, intent);
+
+                // Finaliza la actividad
+                finish();
+
                 break;
 
         }
 
     }
     //TODO PARA QUE AL DARLE PARA ATRAS SE GUARDEN LOS DATOS
-    @Override
+   /* @Override
     protected void onResume() {
         super.onResume();
         guardarQuimico();
@@ -138,21 +156,10 @@ public class Activity3 extends AppCompatActivity implements View.OnClickListener
         Log.i("CICLO", "ejecutando ONDESTROY EN MAINACTIVITY");
         // Recargar datos al reanudar la actividad
         guardarQuimico();
+        finish();
 
-    }
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.i("CICLO", "ejecutando ONRESTAR EN MAINACTIVITY");
-        guardarQuimico();
-    }
+    }*/
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i("CICLO", "ejecutando ON PAUSE EN MAINACTIVITY");
-        guardarQuimico();
-    }
 
 
 }
